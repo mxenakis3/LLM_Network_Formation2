@@ -17,13 +17,20 @@ class ReActAgent:
     def __init__(self, client, system, id, type_specific_params = {"edge_cost": 0, "consensus_0_reward": 0, "consensus_1_reward":0}): # system prompt: you are working in a loop, etc. 
         self.id = id
         self.type = self.id % 2
-        self.color = None
+        self.color = "Undeclared" # Previously set to None, but agents were under the impression that "None" meant that an edge could be purcahsed to reveal agent's color
         self.edge_cost = type_specific_params["edge_cost"]
         self.consensus_0_reward = type_specific_params["consensus_0_reward"]
         self.consensus_1_reward = type_specific_params["consensus_1_reward"]
         self.client = client
         self.system = system # system message
         self.messages = [] # memory/scratchpad
+        self.permanent_memory = []
+
+        # The following dictionaries are updated from the agent's view of the state in the main loop.
+        self.colors = {}
+        self.spls = {}
+        self.degrees = {}
+
         if self.system is not None:
             self.messages.append({"role": "system", "content": self.system})
 
@@ -36,10 +43,13 @@ class ReActAgent:
             self.messages.append({"role": "user", "content": f"""
                                   Currently, your projected reward for a consensus of 0 is {self.consensus_0_reward},
                                   and your projected reward for a consensus of 1 is {self.consensus_1_reward}.
+
+                                  Your color is currently {self.color}
                                 """}) # This is how a user query is added to the list of messages for the agent
 
              # See what the agent wants to do. Will be in form "Thought: {thought} \n Actioon: {action}"
             raw_result = self.execute()
+            print(f"Raw result: {raw_result}")
 
             # Separate raw_result into thought, action, etc. 
             parsed_result = self.parse_output(raw_result)
@@ -137,7 +147,6 @@ class ReActAgent:
         # Initialize variables to store parsed sections
         thought = ""
         action = ""
-        pause = False
 
         # Iterate through each line to parse sections
         for line in lines:
@@ -151,9 +160,38 @@ class ReActAgent:
     # break loop reserved for cases where agent either makes change to network or withdraws from the option to do so on this turn
     def purchase_edge(self, v):
         edge = (self.id, v)
-        # Charge the agents for the new edge
-        self.consensus_0_reward, self.consensus_1_reward = self.consensus_0_reward - self.edge_cost, self.consensus_1_reward - self.edge_cost
-        return {"function": "purchase_edge", "value" : edge, "break_loop": True} # Edge has to process in the system, and return new values for the ReAct agent. If you buy an edge, or change your color, the turn ends
+
+        # Error handling: agent tries to purchase a self-edge
+        if self.id == v:
+            error_msg = {"role": "user", "content": f"""
+                You have attempted to purchase an edge to yourself. As a reminder, you are agent {2}. You can already read your color information, it is {self.color}: 
+            """}
+            self.messages.append(error_msg)
+            return {"function": "purchase_edge", "value" : None, "break_loop": False}
+        
+        # Error handling - tries to buy an edge to a neighbor that already exists - should fail to do so
+        if v in self.colors:
+            error_msg = {"role": "user", "content": f"""
+                         You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent {v}: 
+                         {self.colors}
+                        """}
+            self.messages.append(error_msg)
+            return {"function": "purchase_edge", "value" : None, "break_loop": False}
+        else:
+            # Verify that the edge does exist in the dictionary
+            if v in self.degrees: 
+                # Charge the agents for the new edge
+                self.consensus_0_reward, self.consensus_1_reward = self.consensus_0_reward - self.edge_cost, self.consensus_1_reward - self.edge_cost
+
+                # Edge has to process in the system, and return new values for the ReAct agent. If you buy an edge, or change your color, the turn ends
+                return {"function": "purchase_edge", "value" : edge, "break_loop": True}
+            else: 
+                error_msg = {"role": "user", "content": f"""
+                You have attempted to purchase an edge {v} to an agent that does not exist. Your degrees and shortest path dictionary contain the full set of players of the game: 
+                Degrees dict: {self.degrees}
+                """}
+                self.messages.append(error_msg)
+                return {"function": "purchase_edge", "value" : None, "break_loop": False}
 
     def set_color(self, color=''):
         self.color = color
@@ -193,7 +231,7 @@ class State():
         num_nodes = init_config['V']
 
         # Initialize network with no color
-        for node in range(num_nodes):
+        for node in range(num_nodes - 1):
             self.network.add_node(node, color= None)
 
         # Get shortest path distances, but disconnected nodes have to appear at inf. distance
@@ -274,67 +312,79 @@ def human_updates():
 
 
 if __name__ == "__main__":
-    # Intialize state and agent
+    # Intialize state and agent.
+    # The state is just a representation of the state. The state class does not contain agent objects
     state = State(config['init_configs'])
     client = OpenAI(api_key= openai_api_key)
 
-    idx = 0
-    # The following line is where i am hardcoding agent id. Can be done in loop otherwise. 
-    agent = ReActAgent(client= client, system = config["react_system_message"], id=idx, type_specific_params = config["init_configs"][f"agent_{idx%2}"])
+    # Initialize dictionary to store agents. Key agent_id, value: agent
+    agents = {}
+    for i in range(config['init_configs']['V'] - 1): # Stores the number of nodes in the simulation
+        agent = ReActAgent(client= client, system = config["react_system_message"], id=i, type_specific_params = config["init_configs"][f"agent_{i%2}"])
+        agents[i] = agent
 
     # Start interaction loop
     done = False
     i = 0
     while not done and i < config["max_iters"]:
-         # get Agent's view of state. List: [spls, node degrees, neighbor colors]
-        obs = state.render(agent.id)
 
-        # Get the set of configurations for the current agent. Agent type will be determined by agent.id % 2
-        agent_configs = config['init_configs'][f"agent_{agent.type}"] # Get dictionary of current agent
+        for agent in list(agents.values()):
+            print()
+            print(f"Iteration {i}, Agent {agent.id}")
+            # get Agent's view of state. List: [spls, node degrees, neighbor colors]
+            obs = state.render(agent.id)
 
-        # Let the parameterized game rules contain the total number of iterations left in the game. 
-        agent_configs['total_iters'], agent_configs['iters_remaining'] = i + 1, config["max_iters"] - i
+            agent.spls, agent.degrees, agent.colors = obs
 
-        parameterized_game_rules = config["game_rules"].format(**agent_configs) # Fill in the game rules with the custom parameters for this agent type
+            # Get the set of configurations for the current agent. Agent type will be determined by agent.id % 2
+            agent_configs = config['init_configs'][f"agent_{agent.type}"] # Get dictionary of current agent
 
+            # Let the parameterized game rules contain the total number of iterations left in the game. 
+            agent_configs['total_iters'], agent_configs['iters_remaining'] = i + 1, config["max_iters"] - i
 
-        # Create a message that shows state of game, including the agents id
-        game_rules = {"role": "user", "content" : parameterized_game_rules}
+            parameterized_game_rules = config["game_rules"].format(**agent_configs) # Fill in the game rules with the custom parameters for this agent type
 
-        game_state = {"role": "user", "content": f"""
-                      Your shortest path distances to all other nodes in the network: {str(obs[0])} \n 
-                      The degree of all nodes in the network: {str(obs[1])} \n 
-                      The colors of your connections: {str(obs[2])}.
-                      
-                      You are agent {agent.id}
-                      """
-                }
+            # Create a message that shows state of game, including the agents id
+            game_rules = {"role": "user", "content" : parameterized_game_rules}
 
-        agent_options = {"role": "user", "content" : config['agent_options']}
-        for item in [game_rules, game_state, agent_options]:
-            agent.messages.append(item)
+            game_state = {"role": "user", "content": f"""
+                        Your shortest path distances to all other nodes in the network: {str(obs[0])} \n 
+                        The degree of all nodes in the network: {str(obs[1])} \n 
+                        The colors of your connections: {str(obs[2])}.
+                        
+                        You are agent {agent.id}
+                        """
+                    }
 
-        action_result = agent() # Calls agent to respond to the prompt
+            agent_options = {"role": "user", "content" : config['agent_options']}
+            for item in [game_rules, game_state, agent_options]:
+                agent.messages.append(item)
 
-        # Process action result
-        if action_result["function"] == "set_color":
-            print(f"Agent {action_result['value']['id']} set color to {action_result['value']['color']}.")
-            # Convert to string for visibility if necessary
-            original_color = state.network.nodes[action_result['value']['id']].get('color', 'No color set')
-            print(f"Original color: {original_color}")
-            
-            # Update the node color
-            state.update_node_color(action_result['value']['id'], action_result['value']['color'])
-            
-            # Fetch and print the new color
-            new_color = state.network.nodes[action_result['value']['id']].get('color', 'No color set')
-            print(f"New color: {new_color}")
+            print(f" Current Agent messages: \n {agent.messages}")
+            action_result = agent() # Calls agent to respond to the prompt
 
-        if action_result["function"] == "purchase_edge":
-            print("New edge purchased...")
-            print(f"Original neighbors of source node: {list(state.network.neighbors(action_result['value'][0]))}")
-            state.add_network_edge(action_result['value'])
-            print(f"New neighbors of source node: {list(state.network.neighbors(action_result['value'][0]))}")
+            # Process action result
+            if action_result["function"] == "set_color":
+                print(f"Agent {action_result['value']['id']} set color to {action_result['value']['color']}.")
+                # Convert to string for visibility if necessary
+                original_color = state.network.nodes[action_result['value']['id']].get('color', 'No color set')
+                print(f"Original color: {original_color}")
+                
+                # Update the node color
+                state.update_node_color(action_result['value']['id'], action_result['value']['color'])
+                
+                # Fetch and print the new color
+                new_color = state.network.nodes[action_result['value']['id']].get('color', 'No color set')
+                print(f"New color: {new_color}")
+
+            if action_result["function"] == "purchase_edge":
+                print("New edge purchased...")
+                print(f"Original neighbors of source node: {list(state.network.neighbors(action_result['value'][0]))}")
+                state.add_network_edge(action_result['value'])
+                print(f"New neighbors of source node: {list(state.network.neighbors(action_result['value'][0]))}")
+
+            # Clear agent memory for next round
+            agent.messages = []
 
         # Break for human intervention -- allow human to make changes to network remotely
         human_updates()
