@@ -1,4 +1,4 @@
-max_iters: 2
+max_iters: 5
 react_system_message: |
     You run in a loop of Thought, Action, Observation. 
     At the end of the loop you output an Answer. 
@@ -37,12 +37,13 @@ game_rules: |
 
     You will have two pieces of information about the network, for all players of the game, at all times, given as two dictionaries (to follow):
     1. Degree: The number of connections each player has to other players.
-    2. Shortest path distance: Your minimum degree of separation from every other player in the game.
+    2. Shortest path distance (spls): Your minimum degree of separation from every other player in the game.
 
-    You are only able to see the colors of a subset of players to whom you are connected in the network via an edge. 
-    Each key in the dictionary represents the ID of another agent. Each value represents their color.
+    You are only able to see the colors of a subset of players to whom you are already connected in the network via an edge. 
+    Each key in this dictionary, called "colors" represents the ID of another agent with whom you are already connected. Each value represents their color.
+    If the agent has not committed to a color, their color will appear as "Undeclared".
 
-    Edges (or, connections) to players to whom you are not connected (ie. any player that does NOT already appear in your colors dictionary to follow)
+    Edges (or, connections) to players to whom you are not connected (any player that does NOT already appear in your colors dictionary, to follow)
     can be purchased at a price of {edge_cost}, which will be deducted from your projected payoff. You will not have to pay for any edges if the network fails to come to a consensus. 
 
     When you buy an edge to another player, the state of the network refreshes. On your next turn, both you and the other player will be able to see each other's colors. 
@@ -52,7 +53,7 @@ game_rules: |
     There are {total_iters} iterations or turns in this game, and you have {iters_remaining} turns remaining. 
 agent_options: |
     Note again that if the colors of your connections is an empty dictionary, it is because you do not have any existing connections. 
-    You may purchase connections to any players that are in the degree/ shortest path dictionaries, but not in your colors dictionary. 
+    You may purchase connections to any players that are in the degree/ shortest path dictionaries but are not in your colors dictionary. 
     
     The color of your new connection will be visible to you after the colors dictionary refreshes at the beginning of your next turn. 
     
@@ -71,7 +72,7 @@ agent_options: |
         complete loop
 react_max_iters: 10
 init_configs:
-  V: 6
+  V: 4
   agent_0:
     consensus_0_reward: 3
     consensus_1_reward: 2
