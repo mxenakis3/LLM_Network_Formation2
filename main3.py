@@ -177,6 +177,7 @@ class ReActAgent:
                         """}
             self.messages.append(error_msg)
             return {"function": "purchase_edge", "value" : None, "break_loop": False}
+        
         else:
             # Verify that the edge does exist in the dictionary
             if v in self.degrees: 
@@ -224,10 +225,6 @@ class ReActAgent:
         self.messages.append({"role": "user", "content": time_remaining})
         return {"function":"game_question", "value": None, "break_loop": False}
     
-
-
-
-
 
 
 class State():
