@@ -303,7 +303,7 @@ class ReActAgent:
         return {"function":"set_color", "value": {"id":self.id, "color":self.color}, "break_loop": True}
     
 
-    def finish(self): 
+    def finish(self, state): 
         return {"function":"finish", "value": None, "break_loop": True}
     
     
