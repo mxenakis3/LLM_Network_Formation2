@@ -1,0 +1,55 @@
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: inf, 1: inf, 2: inf, 3: inf, 4: inf, 5: inf, 6: inf, 7: inf, 8: 0, 9: inf, 10: inf, 11: inf, 12: inf, 13: inf, 14: inf, 15: inf, 16: inf, 17: inf} 
+The degree of all nodes in the network: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0} 
+The colors of your connections: {}.
+You are agent 8
+There are 29.912226915359497 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 3,
+and your projected reward for a consensus of 1 is 2.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I currently have no connections to any other players, as indicated by the empty colors dictionary. To have a chance at a consensus
+
+
+I need to purchase edges to other players. Since all players have no current connections and their colors are undeclared
+
+
+I should purchase edges to maximize my potential payoff. The players I can connect to are all players available in the degree and shortest path distance dictionaries. I will choose the player with the lowest ID, which is 0, to start connecting.
+Action: purchase_edge(0)
+
+
+Time: 2.0489933490753174 
+**System** 
+New edge purchased... 
+Original neighbors of source node: []
+
+
+**System** 
+New neighbors of source node: [0]
+
+
+Called purchase_edge and received value (8, 0).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (8, 0), 'break_loop': True}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: inf, 2: inf, 3: 2, 4: inf, 5: inf, 6: inf, 7: 2, 8: 0, 9: inf, 10: inf, 11: 3, 12: 2, 13: inf, 14: inf, 15: inf, 16: inf, 17: 2} 
+The degree of all nodes in the network: {0: 5, 1: 0, 2: 0, 3: 1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 1, 9: 0, 10: 0, 11: 1, 12: 2, 13: 0, 14: 0, 15: 0, 16: 0, 17: 1} 
+The colors of your connections: {0: None}.
+You are agent 8
+There are 27.840781450271606 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.97,
+and your projected reward for a consensus of 1 is 1.97.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
