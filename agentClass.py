@@ -24,11 +24,6 @@ class ReActAgent:
         self.spls = {}
         self.degrees = {}
 
-        # PROMPTS THAT DO NOT CHANGE:
-        # Get configs for this agent
-        self.system = config["react_system_message"]
-        if self.system is not None:
-            self.messages.append({"role": "system", "content": self.system})
 
         # Agent configs
         agent_configs = config['init_configs'][f"agent_{self.type}"]
@@ -38,6 +33,12 @@ class ReActAgent:
 
         # Create a message that shows state of game, including the agents id
         self.game_rules = {"role": "user", "content" : self.game_rules_str}
+
+        # PROMPTS THAT DO NOT CHANGE:
+        # Get configs for this agent
+        self.system = config["react_system_message"]
+        if self.system is not None:
+            self.messages.append({"role": "system", "content": self.system})
 
         self.agent_options = {"role": "user", "content" : config['agent_options']}
 
