@@ -1,0 +1,41 @@
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: inf, 1: inf, 2: inf, 3: inf, 4: inf, 5: 0, 6: inf, 7: inf, 8: inf, 9: inf, 10: inf, 11: inf, 12: inf, 13: inf, 14: inf, 15: inf, 16: inf, 17: inf} 
+The degree of all nodes in the network: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0} 
+The colors of your connections: {}.
+You are agent 5
+There are 29.949005603790283 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2,
+and your projected reward for a consensus of 1 is 3.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I currently have no connections to any other players in the network, and all the shortest path distances and degrees indicate that I am not connected to anyone. To increase my chance of earning a payoff
+
+
+I need to purchase an edge to another player. Since it will require spending some of my projected payoff
+
+
+I must choose a player strategically. I will purchase an edge to any player, as there are no existing connections. 
+Action: purchase_edge(0)  # I will choose to purchase an edge to player 0 as a starting connection.
+
+
+Time: 49.13624954223633 
+**System** 
+New edge purchased... 
+Original neighbors of source node: [4]
+
+
+**System** 
+New neighbors of source node: [4, 0]
+
+
+Called purchase_edge and received value (5, 0).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (5, 0), 'break_loop': True}

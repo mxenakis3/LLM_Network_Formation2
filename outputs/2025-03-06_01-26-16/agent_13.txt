@@ -1,0 +1,13 @@
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: inf, 1: inf, 2: inf, 3: inf, 4: inf, 5: inf, 6: inf, 7: inf, 8: inf, 9: inf, 10: inf, 11: inf, 12: inf, 13: 0, 14: inf, 15: inf, 16: inf, 17: inf} 
+The degree of all nodes in the network: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0} 
+The colors of your connections: {}.
+You are agent 13
+There are 29.847441911697388 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2,
+and your projected reward for a consensus of 1 is 3.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)

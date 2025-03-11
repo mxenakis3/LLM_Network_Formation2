@@ -1,0 +1,145 @@
+
+Time: 1.6813204288482666 
+**System** 
+Agent 11 adds edge 12
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(11, 12, {})]
+
+
+Time: 1.8068060874938965 
+**System** 
+Agent 3 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (11, 12, {})]
+
+
+Time: 1.894050121307373 
+**System** 
+Agent 17 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (11, 12, {})]
+
+
+Time: 2.040627956390381 
+**System** 
+Agent 7 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (11, 12, {})]
+
+
+Time: 2.050161123275757 
+**System** 
+Agent 8 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (11, 12, {})]
+
+
+Time: 2.056820869445801 
+**System** 
+Agent 12 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (11, 12, {})]
+
+
+Time: 2.178532361984253 
+**System** 
+Agent 10 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (11, 12, {})]
+
+
+Time: 2.5826170444488525 
+**System** 
+Agent 0 adds edge 1
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (11, 12, {})]
+
+
+Time: 3.32589054107666 
+**System** 
+Agent 4 adds edge 5
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (4, 5, {}), (11, 12, {})]
+
+
+Time: 20.37790560722351 
+**System** 
+Agent 1 adds edge 2
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (1, 2, {}), (4, 5, {}), (11, 12, {})]
+
+
+Time: 29.39725923538208 
+**System** 
+Agent 6 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (0, 6, {}), (1, 2, {}), (4, 5, {}), (11, 12, {})]
+
+
+Time: 37.836663484573364 
+**System** 
+Agent 15 adds edge 16
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (0, 6, {}), (1, 2, {}), (4, 5, {}), (11, 12, {}), (15, 16, {})]
+
+
+Time: 49.13624954223633 
+**System** 
+Agent 5 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (0, 6, {}), (0, 5, {}), (1, 2, {}), (4, 5, {}), (11, 12, {}), (15, 16, {})]
+
+
+Time: 56.46701145172119 
+**System** 
+Agent 9 adds edge 0
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (0, 6, {}), (0, 5, {}), (0, 9, {}), (1, 2, {}), (4, 5, {}), (11, 12, {}), (15, 16, {})]
+
+
+Time: 66.892893075943 
+**System** 
+Agent 6 adds edge 1
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (0, 6, {}), (0, 5, {}), (0, 9, {}), (1, 2, {}), (1, 6, {}), (4, 5, {}), (11, 12, {}), (15, 16, {})]
+
+
+Time: 77.18656325340271 
+**System** 
+Agent 1 adds edge 3
+
+
+Nodes: [(0, {'color': None}), (1, {'color': None}), (2, {'color': None}), (3, {'color': None}), (4, {'color': None}), (5, {'color': None}), (6, {'color': None}), (7, {'color': None}), (8, {'color': None}), (9, {'color': None}), (10, {'color': None}), (11, {'color': None}), (12, {'color': None}), (13, {'color': None}), (14, {'color': None}), (15, {'color': None}), (16, {'color': None}), (17, {'color': None})] 
+Edges: [(0, 3, {}), (0, 17, {}), (0, 7, {}), (0, 8, {}), (0, 12, {}), (0, 10, {}), (0, 1, {}), (0, 6, {}), (0, 5, {}), (0, 9, {}), (1, 2, {}), (1, 6, {}), (1, 3, {}), (4, 5, {}), (11, 12, {}), (15, 16, {})]
+
+ Consensus was reached.
