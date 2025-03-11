@@ -1,0 +1,52 @@
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: inf, 1: inf, 2: inf, 3: 0, 4: inf, 5: inf, 6: inf, 7: inf, 8: inf, 9: inf, 10: inf, 11: inf, 12: inf, 13: inf, 14: inf, 15: inf, 16: inf, 17: inf} 
+The degree of all nodes in the network: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0} 
+The colors of your connections: {}.
+You are agent 3
+There are 29.967350006103516 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2,
+and your projected reward for a consensus of 1 is 3.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I have no existing connections to any players in the network, and since all players have a degree of 0
+
+
+I need to purchase an edge to make a connection. I want to connect to any player to gain visibility of their colors and influence the consensus towards a higher projected payoff. I'll choose to purchase an edge to player 0, as they are the first option available. 
+Action: purchase_edge(0)
+
+
+Time: 1.8068060874938965 
+**System** 
+New edge purchased... 
+Original neighbors of source node: []
+
+
+**System** 
+New neighbors of source node: [0]
+
+
+Called purchase_edge and received value (3, 0).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (3, 0), 'break_loop': True}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: inf, 2: inf, 3: 0, 4: inf, 5: inf, 6: inf, 7: inf, 8: inf, 9: inf, 10: inf, 11: inf, 12: inf, 13: inf, 14: inf, 15: inf, 16: inf, 17: 2} 
+The degree of all nodes in the network: {0: 2, 1: 0, 2: 0, 3: 1, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 1, 12: 1, 13: 0, 14: 0, 15: 0, 16: 0, 17: 1} 
+The colors of your connections: {0: None}.
+You are agent 3
+There are 28.079373836517334 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 1.97,
+and your projected reward for a consensus of 1 is 2.97.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)

@@ -1,0 +1,487 @@
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: inf, 1: inf, 2: inf, 3: inf, 4: inf, 5: inf, 6: inf, 7: inf, 8: 0, 9: inf, 10: inf, 11: inf, 12: inf, 13: inf, 14: inf, 15: inf, 16: inf, 17: inf} 
+The degree of all nodes in the network: {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0, 16: 0, 17: 0} 
+The colors of your connections: {}.
+You are agent 8
+There are 59.88314604759216 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 3,
+and your projected reward for a consensus of 1 is 2.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I currently have no connections to other players, and I am unable to see any colors. Since the network is unable to reach a consensus without connections
+
+
+I should purchase an edge to another player. This will allow me to potentially see their color and influence the network. I will buy an edge to player 0 since they're the first available player in the network.
+Action: purchase_edge(0)
+
+
+Time: 3.7984795570373535 
+**System** 
+New edge purchased... 
+Original neighbors of source node: []
+
+
+**System** 
+New neighbors of source node: [0]
+
+
+Called purchase_edge and received value (8, 0).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (8, 0), 'break_loop': True}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: inf, 2: inf, 3: inf, 4: inf, 5: inf, 6: inf, 7: inf, 8: 0, 9: 2, 10: inf, 11: 2, 12: inf, 13: inf, 14: inf, 15: inf, 16: inf, 17: inf} 
+The degree of all nodes in the network: {0: 3, 1: 1, 2: 2, 3: 1, 4: 0, 5: 0, 6: 0, 7: 0, 8: 1, 9: 1, 10: 0, 11: 1, 12: 1, 13: 1, 14: 0, 15: 0, 16: 0, 17: 0} 
+The colors of your connections: {0: None}.
+You are agent 8
+There are 56.102386474609375 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.97,
+and your projected reward for a consensus of 1 is 1.97.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I need to evaluate the network situation. Currently
+
+
+I have one connection (player 0) that is undeclared. I need to decide whether to purchase new edges to gather more information or to set my color. The projected payoff for a consensus of color 0 is better than for color 1, so I should aim to either gather more information or secure that outcome. Since player 0 is currently undeclared
+
+
+I can purchase edges to other players to increase my chances of reaching a consensus.
+Action: purchase_edge(1)  # I will purchase an edge to player 1, who is currently not connected to me.
+
+
+Time: 9.77990460395813 
+**System** 
+New edge purchased... 
+Original neighbors of source node: [0]
+
+
+**System** 
+New neighbors of source node: [0, 1]
+
+
+Called purchase_edge and received value (8, 1).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (8, 1), 'break_loop': True}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 2, 3: 2, 4: 3, 5: 2, 6: 2, 7: inf, 8: 0, 9: 2, 10: 3, 11: 2, 12: 3, 13: 2, 14: 2, 15: 2, 16: 3, 17: 2} 
+The degree of all nodes in the network: {0: 12, 1: 7, 2: 3, 3: 4, 4: 2, 5: 3, 6: 2, 7: 0, 8: 2, 9: 2, 10: 1, 11: 3, 12: 1, 13: 2, 14: 1, 15: 2, 16: 1, 17: 2} 
+The colors of your connections: {0: None, 1: None}.
+You are agent 8
+There are 50.10484290122986 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.9400000000000004,
+and your projected reward for a consensus of 1 is 1.94.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I have no declared connections yet and my projected reward for a consensus of color 0 is higher than for color 1. I should aim to build connections to gather more color information to reach a consensus. I will purchase edges to nodes with the highest degree or shortest path distance to gain insight into their colors.
+Action: purchase_edge(0)
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 0: 
+{0: None, 1: None}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 2, 3: 2, 4: 3, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 3, 11: 2, 12: 3, 13: 2, 14: 2, 15: 2, 16: 3, 17: 2} 
+The degree of all nodes in the network: {0: 13, 1: 10, 2: 5, 3: 4, 4: 3, 5: 4, 6: 3, 7: 1, 8: 2, 9: 2, 10: 1, 11: 4, 12: 1, 13: 3, 14: 1, 15: 2, 16: 1, 17: 2} 
+The colors of your connections: {0: None, 1: None}.
+You are agent 8
+There are 46.9683997631073 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.9400000000000004,
+and your projected reward for a consensus of 1 is 1.94.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I currently have two connections (agents 0 and 1) that have not declared their colors. To gather more information and improve my chances of reaching a consensus for color 0
+
+
+I should purchase an edge to another player with the goal of increasing my visibility. I will target a player that is not currently connected and has a reasonable degree or is close in the shortest path distance. I will purchase an edge to agent 2, who is at a distance of 2 and has a decent degree. 
+Action: purchase_edge(2)
+
+
+Time: 18.20302653312683 
+**System** 
+New edge purchased... 
+Original neighbors of source node: [0, 1]
+
+
+**System** 
+New neighbors of source node: [0, 1, 2]
+
+
+Called purchase_edge and received value (8, 2).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (8, 2), 'break_loop': True}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 2, 4: 2, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 3, 17: 2} 
+The degree of all nodes in the network: {0: 16, 1: 13, 2: 10, 3: 5, 4: 4, 5: 5, 6: 4, 7: 2, 8: 3, 9: 2, 10: 2, 11: 7, 12: 3, 13: 4, 14: 2, 15: 3, 16: 2, 17: 3} 
+The colors of your connections: {0: None, 1: None, 2: None}.
+You are agent 8
+There are 41.6827712059021 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.9100000000000006,
+and your projected reward for a consensus of 1 is 1.91.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I need to assess the current state of the game and think about my next move. I have three connections and all have not yet declared a color. The projected payoff for consensus in color 0 is higher than that for color 1. Since I currently have no declared connections
+
+
+I should consider purchasing edges to potentially connect with other players and increase the chances of reaching a consensus. 
+Action: purchase_edge(3)  # I will purchase an edge to player 3, as they have a reasonable degree and I can only see the colors of my current connections.
+
+
+Time: 21.9699649810791 
+**System** 
+New edge purchased... 
+Original neighbors of source node: [0, 1, 2]
+
+
+**System** 
+New neighbors of source node: [0, 1, 2, 3]
+
+
+Called purchase_edge and received value (8, 3).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (8, 3), 'break_loop': True}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 2, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 3, 17: 2} 
+The degree of all nodes in the network: {0: 16, 1: 15, 2: 12, 3: 8, 4: 4, 5: 5, 6: 5, 7: 2, 8: 4, 9: 3, 10: 3, 11: 7, 12: 4, 13: 4, 14: 3, 15: 4, 16: 2, 17: 3} 
+The colors of your connections: {0: None, 1: None, 2: None, 3: None}.
+You are agent 8
+There are 37.937437772750854 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.880000000000001,
+and your projected reward for a consensus of 1 is 1.88.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I need to establish a consensus in the network. My current connections are all undeclared, and to boost my chances of reaching a higher payoff
+
+
+I need to influence other players. Since the potential payoff for a consensus of color 0 is higher than for color 1
+
+
+I should begin by purchasing edges to other players who might also lean towards color 0. 
+Action: purchase_edge(4)  # I will purchase an edge to player 4, who is currently not in my colors dictionary.
+
+
+Time: 26.0038959980011 
+**System** 
+New edge purchased... 
+Original neighbors of source node: [0, 1, 2, 3]
+
+
+**System** 
+New neighbors of source node: [0, 1, 2, 3, 4]
+
+
+Called purchase_edge and received value (8, 4).
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': (8, 4), 'break_loop': True}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 3, 17: 2} 
+The degree of all nodes in the network: {0: 16, 1: 16, 2: 13, 3: 10, 4: 8, 5: 6, 6: 6, 7: 3, 8: 5, 9: 3, 10: 3, 11: 8, 12: 4, 13: 4, 14: 4, 15: 5, 16: 3, 17: 3} 
+The colors of your connections: {0: None, 1: None, 2: None, 3: None, 4: None}.
+You are agent 8
+There are 33.893998861312866 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I need to establish connections to other players in order to determine their colors and work towards a consensus for the maximum projected payoff. The current colors of my connections are all undeclared, so it makes sense to purchase connections to players who are not currently connected to me. Given my payoff and the goal of reaching a consensus
+
+
+I will initially purchase an edge to player 0, who has the highest degree of 16, increasing the chances of reaching consensus.
+Action: purchase_edge(0)
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 0: 
+{0: None, 1: None, 2: None, 3: None, 4: None}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 16, 2: 14, 3: 12, 4: 9, 5: 6, 6: 6, 7: 3, 8: 5, 9: 4, 10: 3, 11: 8, 12: 5, 13: 5, 14: 5, 15: 7, 16: 4, 17: 3} 
+The colors of your connections: {0: None, 1: None, 2: None, 3: None, 4: None}.
+You are agent 8
+There are 30.497674465179443 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I need to establish more connections to other players in the network to gather information about their colors. Currently, all my connections are undeclared. I will purchase an edge to one of the players who has not yet been connected to me. The player with ID 1 has a significant degree (16) and is a good candidate for connection. By purchasing this edge
+
+
+I hope to see their color in the upcoming round and move closer to a consensus. 
+Action: purchase_edge(1)
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 1: 
+{0: None, 1: None, 2: None, 3: None, 4: None}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 17, 2: 16, 3: 14, 4: 10, 5: 7, 6: 6, 7: 4, 8: 5, 9: 4, 10: 4, 11: 9, 12: 6, 13: 6, 14: 5, 15: 7, 16: 5, 17: 4} 
+The colors of your connections: {0: None, 1: None, 2: None, 3: None, 4: None}.
+You are agent 8
+There are 26.688896894454956 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I still have no declared colors among my connections, and my maximum projected payoff for consensus on color 0 is significantly higher than for color 1. I should find another player to connect to who is not currently in my colors dictionary. Since both players 2 and 3 have high degrees (16 and 14 respectively), they are prime candidates for purchasing an edge. I'll purchase an edge to player 2, which will hopefully allow me to see their color and strengthen my chances for consensus. 
+Action: purchase_edge(2)
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 2: 
+{0: None, 1: None, 2: None, 3: None, 4: None}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 17, 2: 17, 3: 16, 4: 10, 5: 8, 6: 7, 7: 4, 8: 5, 9: 5, 10: 6, 11: 10, 12: 6, 13: 7, 14: 5, 15: 7, 16: 6, 17: 5} 
+The colors of your connections: {0: None, 1: None, 2: None, 3: None, 4: None}.
+You are agent 8
+There are 22.577816486358643 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: Once again, my current connections have all undeclared colors. I need to connect to a new player to discern more about their chosen colors and strategize towards a consensus. Players 3 or 4 would be good candidates since they both have decent degrees (16 and 10 respectively). However
+
+
+I should prioritize player 3 due to their higher degree, which may facilitate more connections. I'll purchase an edge to player 3 to gain visibility into their color in the next round. 
+Action: purchase_edge(3)
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 3: 
+{0: None, 1: None, 2: None, 3: None, 4: None}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 17, 2: 17, 3: 16, 4: 13, 5: 8, 6: 8, 7: 6, 8: 5, 9: 6, 10: 6, 11: 11, 12: 6, 13: 8, 14: 6, 15: 7, 16: 6, 17: 5} 
+The colors of your connections: {0: None, 1: None, 2: None, 3: None, 4: None}.
+You are agent 8
+There are 20.147713661193848 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: My current connections all have undeclared colors, and I need to establish more visibility to make a strategic move. Since I cannot connect to players 0, 1, 2, or 3
+
+
+I will target player 4 who has a decent degree of 13. This may provide additional information about the consensus in the network. I will purchase an edge to player 4.
+
+
+**System**: 
+It seems you have formulated your action incorrectly. 
+It should be formatted as:
+Action: function_name(parameter). Please reformat the request.
+
+
+**System** 
+Action Processed: {'function': 'process_action', 'value': 'reformat', 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 2, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 17, 2: 17, 3: 16, 4: 15, 5: 10, 6: 8, 7: 8, 8: 5, 9: 6, 10: 7, 11: 11, 12: 6, 13: 9, 14: 6, 15: 8, 16: 6, 17: 6} 
+The colors of your connections: {0: None, 1: '1', 2: None, 3: None, 4: None}.
+You are agent 8
+There are 16.493330240249634 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I want to maximize my projected payoff, which is highest if the entire network selects color 0. To increase the likelihood of achieving this consensus
+
+
+I need to connect with more players, particularly those who are still undeclared. Right now
+
+
+I have some neighbors that are undeclared, so I should purchase edges to them to see their colors and influence the consensus. 
+Action: purchase_edge(0)  # Connecting with player 0 who is undeclared.
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 0: 
+{0: None, 1: '1', 2: None, 3: None, 4: None}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 1, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 17, 2: 17, 3: 16, 4: 16, 5: 13, 6: 8, 7: 8, 8: 6, 9: 7, 10: 8, 11: 12, 12: 7, 13: 9, 14: 7, 15: 8, 16: 6, 17: 6} 
+The colors of your connections: {0: None, 1: '1', 2: None, 3: None, 4: None, 11: None}.
+You are agent 8
+There are 12.955599784851074 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I need to connect with more players to increase my chances of determining the overall color choice in the network. My connections to players with 'None' as their color allows me to influence the consensus, so I should purchase edges to those players. Connecting to player 3 seems strategic since they are also undeclared, which adds to my chances of forming a consensus for color 0. 
+Action: purchase_edge(3)  # Connecting with player 3 who is undeclared.
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 3: 
+{0: None, 1: '1', 2: None, 3: None, 4: None, 11: None}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 1, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 17, 2: 17, 3: 17, 4: 16, 5: 15, 6: 9, 7: 8, 8: 6, 9: 7, 10: 9, 11: 12, 12: 8, 13: 9, 14: 7, 15: 8, 16: 7, 17: 7} 
+The colors of your connections: {0: None, 1: '1', 2: None, 3: None, 4: None, 11: '1'}.
+You are agent 8
+There are 10.797183752059937 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
+
+
+**Agent**: 
+Thought: I need to find a way to maximize my projected payoff by increasing the likelihood of a consensus on color 0. Currently
+
+
+I have several undeclared connections, and I need to evaluate if purchasing an edge to any of those can help me gather more information or influence their colors. Player 4 has not declared their color, so I should purchase an edge to connect with them. This connection could potentially help sway the consensus towards color 0. 
+Action: purchase_edge(4)  # Attempting to connect with player 4 who is undeclared.
+
+
+**System**: 
+You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent 4: 
+{0: None, 1: '1', 2: None, 3: None, 4: None, 11: '1'}
+
+
+**System** 
+Action Processed: {'function': 'purchase_edge', 'value': None, 'break_loop': False}
+
+
+**System**: 
+Your shortest path distances to all other nodes in the network: {0: 1, 1: 1, 2: 1, 3: 1, 4: 1, 5: 2, 6: 2, 7: 2, 8: 0, 9: 2, 10: 2, 11: 1, 12: 2, 13: 2, 14: 2, 15: 2, 16: 2, 17: 2} 
+The degree of all nodes in the network: {0: 17, 1: 17, 2: 17, 3: 17, 4: 16, 5: 15, 6: 12, 7: 8, 8: 6, 9: 7, 10: 9, 11: 12, 12: 8, 13: 9, 14: 8, 15: 9, 16: 7, 17: 8} 
+The colors of your connections: {0: None, 1: '1', 2: None, 3: None, 4: None, 11: '1'}.
+You are agent 8
+There are 8.06474494934082 seconds remaining in the game. 
+Currently, your projected reward for a consensus of 0 is 2.850000000000001,
+and your projected reward for a consensus of 1 is 1.8499999999999999.
+Your color is currently Undeclared
+Format your response as:
+Thought: I need to find the mass of Earth
+Action: get_planet_mass(Earth)
