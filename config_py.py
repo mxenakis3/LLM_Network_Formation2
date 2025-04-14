@@ -1,29 +1,42 @@
 
 config = {
   "max_iters": 5,
+  # "react_system_message": f"""
+  #     You run in a loop of Thought and Action. 
+  #     Use Thought to describe your thoughts about the prompt you are given.
+  #     Use Action to run one of the actions available to you.
 
-  "duration": 30, # Time of experiment in seconds
+  #     Example session #1:
 
-  "react_system_message": f"""
+  #     Prompt: You have no neighbors in the network
+  #     Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+  #     Action: purchase_edge(0)
+
+  #     Example session #2:
+
+  #     Prompt: All of your neighbors have color 1, but your color is undeclared
+  #     Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+  #     Action: set_color(1)
+
+  #     Prompt: All of your neighbors have color 0, and so do you.
+  #     Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+  #     Action: finish()
+  #     """,
+
+"react_system_message": f"""
       You run in a loop of Thought and Action. 
-      Use Thought to describe your thoughts about the prompt you are given.
-      Use Action to run one of the actions available to you.
+      First, generate a thought about a logical action to take in the game. 
 
       Example session #1:
-
       Prompt: You have no neighbors in the network
       Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
-      Action: purchase_edge(0)
 
       Example session #2:
-
       Prompt: All of your neighbors have color 1, but your color is undeclared
       Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
-      Action: set_color(1)
 
-      Prompt: All of your neighbors have color 0, and so do you.
+      Example session #3:   
       Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
-      Action: finish()
       """,
 
   # "react_system_message": """
@@ -70,7 +83,7 @@ config = {
   1. **You can only see the colors of players you are directly connected to.**
     - These players appear in the `colors` dictionary.
     - If a player does **not** appear in this dictionary, they are **not connected to you**, and you **cannot see their color**.
-    - If a player **is in your `colors` dictionary but shows as "undeclared,"** it means they **have not yet chosen a color.**
+    - If a player **is in your `colors` dictionary but shows as "None,"** it means they **have not yet chosen a color**.
 
   2. **You receive network-wide statistics** (but NOT full player states):
     - **Degree (number of connections per player).**
@@ -86,8 +99,8 @@ config = {
 
   ### **Important Constraints**:
   - You **cannot assume** the color of an unconnected agent.
-  - An agent is **not "undeclared" unless you are connected to them AND their color is still undecided**.
   - If no consensus is reached by the end of the game, all players receive **zero payoff**, regardless of connections.
+  - The colors dictionary will automatically update if and when your neighbors change their colors.
   """,
 
   # "game_rules": """
@@ -116,13 +129,7 @@ config = {
 
   #     """, #       There are {max_iters} iterations or turns in this game, and you have {iters_remaining} turns remaining.
       
-      
-  "agent_options": """
-    Your available actions are:
-    1. purchase_edge(neighbor_id): Purchase an edge to a neighboring player.
-    2. set_color(color): Set your color to either 0 or 1.
-    3. finish(): End your turn and complete the loop.
-    """,
+    
 
   "react_max_iters": 3,
   "init_configs": {
