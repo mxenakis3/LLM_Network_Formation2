@@ -102,39 +102,12 @@ config = {
   - If no consensus is reached by the end of the game, all players receive **zero payoff**, regardless of connections.
   - The colors dictionary will automatically update if and when your neighbors change their colors.
   """,
-
-  # "game_rules": """
-  #     You are in a multiplayer game where the object is to earn the highest payoff. 
-
-  #     In this game, each player controls the color (either 0, 1, or None) of a vertex in a network.
-
-  #     If the entire network picks color 0, your maximum projected payoff will be {consensus_0_reward}.
-  #     If the entire network picks color 1, your maximum projected payoff will be {consensus_1_reward}.
-  #     If no consensus is reached, you will not win any money.
-
-  #     You will have two pieces of information about the network, for all players of the game, at all times, given as two dictionaries:
-  #     1. Degree: The number of connections each player has to other players.
-  #     2. Shortest path distance (spls): Your minimum degree of separation from every other player in the game.
-
-  #     You are only able to see the colors of a subset of players to whom you are already connected in the network via an edge. 
-  #     Each key in this dictionary, called "colors" represents the ID of another agent with whom you are already connected. Each value represents their color.
-  #     If the agent has not committed to a color, their color will appear as "undeclared".
-
-  #     Edges (or, connections) to players to whom you are not connected (any player that does NOT already appear in your colors dictionary, to follow)
-  #     can be purchased at a price of {edge_cost}, which will be deducted from your projected payoff. You will not have to pay for any edges if the network fails to come to a consensus. 
-
-  #     When you buy an edge to another player, the state of the network refreshes. On your next turn, both you and the other player will be able to see each other's colors. 
-
-  #     Once an edge has bought, it will remain in the network until the game expires. 
-
-  #     """, #       There are {max_iters} iterations or turns in this game, and you have {iters_remaining} turns remaining.
-      
     
 
   "react_max_iters": 3,
   "init_configs": {
-    "duration": 60, # time of experiment in seconds
-    "V": 36,
+    "duration": 15, # time of experiment in seconds
+    "V": 8,
     "agent_0":{      
       "consensus_0_reward": 3,
       "consensus_1_reward": 2,

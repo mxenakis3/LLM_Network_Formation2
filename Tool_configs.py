@@ -1,28 +1,3 @@
-add_activity = {
-  "type": "function",
-  "function": {
-    "name": "add_activity",
-    "description": """
-      Adds a new activity to the schedule
-      This function will be called on a user query, and autonomously parse the query and request any missing inputs. 
-      **You are NOT responsible for requesting any additional input from user**
-      **You can assume a new activity is added EACH time this function is processed.**
-    """,
-    "parameters": {
-      "type": "object", # parameters has type object
-      "properties": {
-        "prompt": {
-          "type": "string",
-          "description": "The users exact query"
-        },
-      },
-      "required": ["prompt"],
-      "additionalProperties": False
-    },
-  "strict": True
-  },
-}
-
 purchase_edge = {
   "type": "function",
   "function": {
@@ -34,7 +9,7 @@ purchase_edge = {
       "type": "object",
       "properties": {
         "neighbor_id" : {
-          "type": "string",
+          "type": "number",
           "description": "The ID of the neighbor to whom you will purchase an edge"
         },
       },
@@ -67,11 +42,11 @@ set_color = {
   }
 }
 
-finish = {
+do_nothing = {
   "type": "function",
   "function": {
-    "name": "finish",
-    "description": "End your turn (stay put without buying any edges or changing your color)",
+    "name": "do_nothing",
+    "description": "Stay put without buying any edges or changing your color",
     "parameters": {
       "type": "object",  # Define the type as an object
       "properties": {},  # No parameters, so properties are empty
@@ -82,4 +57,4 @@ finish = {
   },
 }
 
-agent_actions = [purchase_edge, set_color, finish]
+agent_actions = [purchase_edge, set_color, do_nothing]

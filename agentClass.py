@@ -35,56 +35,46 @@ class ReActAgent:
         # PROMPTS THAT DO NOT CHANGE:
         # Get configs for this agent
         self.system = config["react_system_message"]
-        if self.system is not None:
-            self.messages.append({"role": "system", "content": self.system})
-
 
     async def __call__(self, state, react_max_iters=5): 
-        # Agent reacts to current view of state and stores reaction in memory
-        # react max iters: number of tries agent gets to "think" before they get cut off
-        # for idx in range(react_max_iters):
         self.spls, self.degrees, self.colors = state.render(self.id) 
 
         if self.system is not None: # self.system is the system message that outlines the ReAct scheme
             self.messages.append({"role": "system", "content": self.system})
+            self.permanent_memory.append(f"**System** \n {self.system}")
         self.messages.append(self.game_rules)
+        self.permanent_memory.append(f"**System** \n [Game Rules Repeat]")
 
+        # Format current state into JSON
+        json_state = json.dumps({
+            "agent_id": self.id,
+            "time_remaining": round(self.time_limit - (time.time() - self.start_time), 3),
+            "current_color": self.color if self.color else "Undeclared",
+            "projected_rewards": {
+                "0": self.consensus_0_reward,
+                "1": self.consensus_1_reward
+            },
+            "connected_colors": self.colors or {},
+            "shortest_path_distances": self.spls,
+            "node_degrees": self.degrees
+        }, indent=2)
         
-        # Get current state
-        state_message = f"""
-                Your shortest path distances to all other nodes in the network: {self.spls} \n 
-                The degree of all nodes in the network: {self.degrees} \n 
-                The colors of your connections: {self.colors if self.colors != None else 'Undeclared'}.
-                
-                You are agent {self.id}
+        # Add current state to memory
+        self.messages.append({"role": "user", "content": f"Current state of game: \n {json_state}"})
+        self.permanent_memory.append(f"**System**: \n Current state of game: \n {json_state}")
 
-                There are {self.time_limit - (time.time() - self.start_time)} seconds remaining in the game. 
-
-                Currently, your projected reward for a consensus of 0 is {self.consensus_0_reward},
-                and your projected reward for a consensus of 1 is {self.consensus_1_reward}.
-
-                Your color is currently {self.color}
-
-                Format your response as:
-                    Thought: I need to find the mass of Earth
-                    Action: get_planet_mass(Earth)
-                """
-        
-        self.messages.append({"role": "user", "content": state_message}) # This is how a user query is added to the list of messages for the agent
-        self.permanent_memory.append(f"**System**: \n {state_message}")
-
-        # See what the agent wants to do. Will string in form f"Thought: {thought} \n Action: {action}"
-        raw_result = await self.execute(state)
-        if not raw_result:
-            return # We may encounter this during limit errors. Use try/except block instead?
+        # Generate thought based on current state
+        try:
+            raw_result = await self.query(state)
+        except Exception as e:
+            self.permanent_memory.append(f"**System** \n Exception occurred in generating thought. Returning early")
+            return
+        # Append most recent thought to memory
         self.permanent_memory.append(f"**Agent**: \n {raw_result.content}")
 
-        # Use tool calling to process the action.
+        # Pass the thought to the tool caller. This will parse the thought into a function call.
         action_choice = await self.call_with_tools([{"role": "assistant", "content" : raw_result.content}], self.tools)
-        # print(f"agent {self.id} action choice type: {type(action_choice)} with value: {action_choice}")
-        # if action_choice == None:
-        #     print(f"Agent {self.id} chooses no action. Messages:")
-        #     print(self.messages)
+
         # Call the action chosen by the tool
         fn_name = action_choice[0].function.name
         fn_args = json.loads(action_choice[0].function.arguments)
@@ -96,10 +86,9 @@ class ReActAgent:
         method = getattr(self, fn_name, None)           
         if method and asyncio.iscoroutinefunction(method):
             call = asyncio.create_task(method(**fn_args))
-            output = await call # calls the function
+            await call # calls the function
 
-        # Uses the helper function to process/call the action
-        # action = await self.process_action(self.messages[-1]["content"], state) 
+        # Add the function call to memory
         self.permanent_memory.append(f"**System** \n Action Processed: {fn_name}({fn_args})")
 
     
@@ -124,7 +113,8 @@ class ReActAgent:
         except Exception as e:
             print(f"Exception: {e}")
 
-    async def execute(self, state):
+
+    async def query(self, state):
         # Query the LLM with full stack of current messages
         num_retries = 3
         retries = 0
@@ -135,7 +125,7 @@ class ReActAgent:
                     messages = self.messages
                 )
                 return completion.choices[0].message # This returns only the AI's response in text without any "context". 
-            except openai.RateLimitError as e:
+            except openai.RateLimitError:
                 state.update_log.append(f"Rate limit error: Agent {self.id}, time: {time.time() - self.start_time}")
                 wait_time = 1
                 await asyncio.sleep(wait_time)
@@ -146,18 +136,6 @@ class ReActAgent:
     # TOOLS. Format with function, value, break loop.
     # break loop reserved for cases where agent either makes change to network or withdraws from the option to do so on this turn
     async def purchase_edge(self, neighbor_id, state):
-        if not neighbor_id.isnumeric():
-            error = f"""
-                Format the parameter as the integer representing the agent id of the agent you would like to connect with, ex: (1) for agent 1. : 
-            """
-            error_msg = {"role": "user", "content":error }
-            self.messages.append({"role": "user", "content": error})
-            self.permanent_memory.append(f"**System**: \n {error}")
-
-            return {"function": "purchase_edge", "value" : None, "break_loop": False}
-        neighbor_id = int(neighbor_id)
-        edge = (self.id, neighbor_id)
-
         # Error handling: agent tries to purchase a self-edge
         if self.id == neighbor_id:
             error =  f"""
@@ -165,7 +143,7 @@ class ReActAgent:
             """
             self.messages.append({"role": "user", "content": error})
             self.permanent_memory.append(f"**System**: \n {error}")
-            return {"function": "purchase_edge", "value" : None, "break_loop": False}
+            return
         
         # Error handling - tries to buy an edge to a neighbor that already exists - illegal move
         if neighbor_id in self.colors:
@@ -173,13 +151,13 @@ class ReActAgent:
                          You have attempted to purchase an edge to an agent with whom you are already connected. Your colors dictionary contains agent {neighbor_id}: 
                          {self.colors}
                         """
-            error_msg = {"role": "user", "content": error}
             self.messages.append({"role": "user", "content": error})
             self.permanent_memory.append(f"**System**: \n {error}")
-            return {"function": "purchase_edge", "value" : None, "break_loop": False}
+            return
         
         # Not a self edge, not an existing edge
         else:
+            edge = (self.id, neighbor_id)
             # Verify that the edge does exist in the dictionary
             if neighbor_id in self.degrees: 
                 # Edge has to process in the system, and return new values for the ReAct agent. If you buy an edge, or change your color, the turn ends
@@ -191,7 +169,7 @@ class ReActAgent:
                     state.update_log.append(f"Time: {time.time() - self.start_time} \n **System** \n Agent {self.id} adds edge {edge[1]}")
                     state.update_log.append(f" Nodes: {state.network.nodes(data=True)} \n Edges: {state.network.edges(data=True)}")
                     self.permanent_memory.append(f"**System** \n New neighbors of source node: {list(state.network.neighbors(edge[0]))}")
-                return {"function": "purchase_edge", "value" : edge, "break_loop": True}
+                return
             
             else: 
                 error = f"""
@@ -204,8 +182,7 @@ class ReActAgent:
 
 
     async def set_color(self, color, state):
-        self.color = color
-        if color not in [str(0), str(1), 'undeclared']:
+        if color not in [str(0), str(1), 'Undeclared']:
             error = f"""
             You have attempted to set a color {color} that is not allowed in the game. The choices available to you are [0, 1, 'Undeclared']
             """
@@ -227,15 +204,15 @@ class ReActAgent:
         return {"function":"set_color", "value": {"id":self.id, "color":self.color}, "break_loop": True}
     
 
-    async def finish(self, state): 
-        return {"function":"finish", "value": None, "break_loop": True}
+    async def do_nothing(self, state): 
+        return
     
     
     async def agent_loop(self, state, time_limit):
         """ The main loop, which allows the agent to think continuously until time expires """
         while time.time() - self.start_time < time_limit:
 
-            action_result = await self(state) # Calls agent to respond to the prompt
+            await self(state) # Calls agent to respond to the prompt
 
             # Add a small sleep in order to allow other agents to access the event loop
             await asyncio.sleep(0.1)
