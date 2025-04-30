@@ -1,0 +1,91 @@
+
+Time: 2.206935405731201 
+**System** 
+Agent 566 adds edge 629
+
+
+Nodes: [(629, {'color': None}), (566, {'color': None}), (541, {'color': None}), (752, {'color': None}), (927, {'color': None}), (317, {'color': None}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {})]
+
+
+Time: 4.126344442367554 
+**System** 
+Agent 752 set color from None to 1.
+
+
+Nodes: [(629, {'color': None}), (566, {'color': None}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': None}), (317, {'color': None}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {})]
+
+
+Time: 4.804836988449097 
+**System** 
+Agent 629 set color from None to 0.
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': None}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': None}), (317, {'color': None}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {})]
+
+
+Time: 5.096538305282593 
+**System** 
+Agent 317 adds edge 629
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': None}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': None}), (317, {'color': None}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {}), (629, 317, {})]
+
+
+Time: 6.644380569458008 
+**System** 
+Agent 752 adds edge 541
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': None}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': None}), (317, {'color': None}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {}), (629, 317, {}), (541, 752, {})]
+
+
+Time: 7.500457763671875 
+**System** 
+Agent 317 set color from None to 0.
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': None}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': None}), (317, {'color': '0'}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {}), (629, 317, {}), (541, 752, {})]
+
+
+Time: 8.282894134521484 
+**System** 
+Agent 927 set color from None to 0.
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': None}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': '0'}), (317, {'color': '0'}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {}), (629, 317, {}), (541, 752, {})]
+
+
+Time: 8.463791131973267 
+**System** 
+Agent 566 set color from None to 0.
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': '0'}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': '0'}), (317, {'color': '0'}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {}), (629, 317, {}), (541, 752, {})]
+
+
+Time: 8.670633316040039 
+**System** 
+Agent 752 set color from 1 to 1.
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': '0'}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': '0'}), (317, {'color': '0'}), (895, {'color': None}), (391, {'color': None})] 
+Edges: [(629, 566, {}), (629, 317, {}), (541, 752, {})]
+
+
+Time: 9.062955379486084 
+**System** 
+Agent 895 set color from None to 0.
+
+
+Nodes: [(629, {'color': '0'}), (566, {'color': '0'}), (541, {'color': None}), (752, {'color': '1'}), (927, {'color': '0'}), (317, {'color': '0'}), (895, {'color': '0'}), (391, {'color': None})] 
+Edges: [(629, 566, {}), (629, 317, {}), (541, 752, {})]
+
+ Consensus was not reached.

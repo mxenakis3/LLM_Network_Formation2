@@ -1,29 +1,8 @@
 
 config = {
   "max_iters": 5,
-  # "react_system_message": f"""
-  #     You run in a loop of Thought and Action. 
-  #     Use Thought to describe your thoughts about the prompt you are given.
-  #     Use Action to run one of the actions available to you.
 
-  #     Example session #1:
-
-  #     Prompt: You have no neighbors in the network
-  #     Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
-  #     Action: purchase_edge(0)
-
-  #     Example session #2:
-
-  #     Prompt: All of your neighbors have color 1, but your color is undeclared
-  #     Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
-  #     Action: set_color(1)
-
-  #     Prompt: All of your neighbors have color 0, and so do you.
-  #     Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
-  #     Action: finish()
-  #     """,
-
-"react_system_message": f"""
+  "react_system_message": f"""
       You run in a loop of Thought and Action. 
       First, generate a thought about a logical action to take in the game. 
 
@@ -39,34 +18,6 @@ config = {
       Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
       """,
 
-  # "react_system_message": """
-  #     You run in a loop of Thought, Action, Observation. 
-  #     At the end of the loop you output an Answer. 
-  #     Use Thought to describe your thoughts about the question you have been asked.
-  #     Use Action to run one of the actions available to you.
-  #     Observation will be the result of running those actions.
-
-  #     Example session:
-
-  #     Question: What is the mass of Earth times 2?
-  #     Thought: I need to find the mass of Earth
-  #     Action: get_planet_mass(Earth)
-
-  #     You will be called again with this:
-
-  #     Observation: 5.972e24
-
-  #     Thought: I need to multiply this by 2
-  #     Action: calculate(5.972e24 * 2)
-
-  #     You will be called again with this: 
-
-  #     Observation: 1,1944×10e25
-
-  #     If you have the answer, output it as the Answer.
-
-  #     Answer: The mass of Earth times 2 is 1,1944×10e25.
-  #     """,
 
   "game_rules": """
   You are playing a network consensus game where your goal is to maximize your payoff.

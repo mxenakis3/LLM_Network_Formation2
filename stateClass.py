@@ -1,18 +1,12 @@
 import networkx as nx
 
 class State():
-    def __init__(self, init_config): # For now 
+    def __init__(self): # For now 
         self.network = nx.Graph()
-        # num_nodes = init_config['V']
-
-        # # Initialize network with no color
-        # for node in range(num_nodes):
-        #     self.network.add_node(node, color= None)
 
         # Get shortest path distances, but disconnected nodes have to appear at inf. distance
         # Set initial spls to inf
         self.spls = {u: {v: float('inf') for v in self.network.nodes} for u in self.network.nodes}
-        print(f"spls on init: {self.spls}")
 
         # Then update from single source path lengths
         for u in self.network.nodes:
@@ -70,3 +64,11 @@ class State():
         u, v = edge[0], edge[1]
         self.network.add_edge(u, v)
         self.update_spls()
+
+    def check_unanimous(self):
+        colors = {self.network.nodes[node]['color'] for node in self.network.nodes}
+        # Check if all nodes are either 0 or 1, and if all colors are the same
+        if len(colors) == 1 and all(color in {0, 1} for color in colors):
+            return True, colors.pop()  # pop() removes and returns the only element in the set
+        return False, None
+    

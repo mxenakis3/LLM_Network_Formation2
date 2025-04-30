@@ -1,0 +1,224 @@
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 414,
+"time_remaining": 6.972,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 3,
+"1": 2
+},
+"connected_colors": {},
+"shortest_path_distances": {
+"251": Infinity,
+"503": Infinity,
+"574": Infinity,
+"129": Infinity,
+"922": Infinity,
+"637": Infinity,
+"414": 0,
+"661": Infinity
+},
+"node_degrees": {
+"251": 0,
+"503": 0,
+"574": 0,
+"129": 0,
+"922": 0,
+"637": 0,
+"414": 0,
+"661": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I have no connected players and my color is undeclared
+
+
+I should purchase edges to some players (such as 251, 503, or 574) to gather information about their colors and aim for global consensus before time runs out.
+
+
+Time: 2.510119915008545 
+**System** 
+New edge purchased... 
+Original neighbors of source node: []
+
+
+**System** 
+New neighbors of source node: [251]
+
+
+**System** 
+Action Processed: purchase_edge({'neighbor_id': 251, 'state': <stateClass.State object at 0x000001ABFFC503D0>})
+
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 414,
+"time_remaining": 4.37,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 2.97,
+"1": 1.97
+},
+"connected_colors": {
+"251": null
+},
+"shortest_path_distances": {
+"251": 1,
+"503": 2,
+"574": Infinity,
+"129": Infinity,
+"922": Infinity,
+"637": Infinity,
+"414": 0,
+"661": Infinity
+},
+"node_degrees": {
+"251": 2,
+"503": 1,
+"574": 0,
+"129": 0,
+"922": 0,
+"637": 0,
+"414": 1,
+"661": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I have only one connected player (agent 251) whose color is still undeclared
+
+
+I should purchase an edge to another player (preferably agent 503) to reveal their color, as this will provide more information and help me determine the best color to choose for reaching consensus. This is important because if I do nothing
+
+
+I might end up earning nothing if agent 251 chooses a color that does not lead to consensus. Additionally, since I have the time remaining (4.37) to make a purchase
+
+
+I should act quickly to gather this information.
+
+
+Time: 6.269301414489746 
+**System** 
+New edge purchased... 
+Original neighbors of source node: [251]
+
+
+**System** 
+New neighbors of source node: [251, 503]
+
+
+**System** 
+Action Processed: purchase_edge({'neighbor_id': 503, 'state': <stateClass.State object at 0x000001ABFFC503D0>})
+
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 414,
+"time_remaining": 0.627,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 2.9400000000000004,
+"1": 1.94
+},
+"connected_colors": {
+"251": null,
+"503": "1"
+},
+"shortest_path_distances": {
+"251": 1,
+"503": 1,
+"574": Infinity,
+"129": Infinity,
+"922": Infinity,
+"637": Infinity,
+"414": 0,
+"661": Infinity
+},
+"node_degrees": {
+"251": 2,
+"503": 2,
+"574": 0,
+"129": 0,
+"922": 0,
+"637": 0,
+"414": 2,
+"661": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I am currently undeclared and my connected neighbor, player 503, has chosen color 1
+
+
+I should change my color to '1' to align with them and increase the chances of achieving consensus. Additionally
+
+
+I should hold off on purchasing any edges as it may not be beneficial given the time constraint and the current state of connections.
+
+
+Time: 8.382927179336548 
+**System** 
+Agent 414 set color from None to 1.
+
+
+**System** 
+Action Processed: set_color({'color': '1', 'state': <stateClass.State object at 0x000001ABFFC503D0>})

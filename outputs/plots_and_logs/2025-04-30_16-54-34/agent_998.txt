@@ -1,0 +1,265 @@
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 998,
+"time_remaining": 6.999,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 3,
+"1": 2
+},
+"connected_colors": {},
+"shortest_path_distances": {
+"998": 0,
+"649": Infinity,
+"771": Infinity,
+"160": Infinity,
+"431": Infinity,
+"781": Infinity,
+"232": Infinity,
+"672": Infinity
+},
+"node_degrees": {
+"998": 0,
+"649": 0,
+"771": 0,
+"160": 0,
+"431": 0,
+"781": 0,
+"232": 0,
+"672": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I am currently undeclared and have no neighbors in the network
+
+
+I should purchase an edge to a player (such as player 649) to possibly gather more information about their color. This will increase my chances of reaching a consensus and maximizing my potential payoff.
+
+
+**System** 
+Action Processed: purchase_edge({'neighbor_id': 649, 'state': <stateClass.State object at 0x00000180998CE290>})
+
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 998,
+"time_remaining": 4.81,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 3,
+"1": 2
+},
+"connected_colors": {
+"649": null
+},
+"shortest_path_distances": {
+"998": 0,
+"649": 1,
+"771": Infinity,
+"160": Infinity,
+"431": Infinity,
+"781": Infinity,
+"232": Infinity,
+"672": Infinity
+},
+"node_degrees": {
+"998": 1,
+"649": 1,
+"771": 0,
+"160": 0,
+"431": 0,
+"781": 0,
+"232": 0,
+"672": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I am connected only to player 649, who has not yet declared a color
+
+
+I should wait and observe their color choice before making a decision. If they declare a color, it will inform my choice for maximum payoff, either to match their color or to choose '0' if I can confirm they will declare '0'.
+
+
+**System** 
+Action Processed: do_nothing({'state': <stateClass.State object at 0x00000180998CE290>})
+
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 998,
+"time_remaining": 2.892,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 3,
+"1": 2
+},
+"connected_colors": {
+"649": null
+},
+"shortest_path_distances": {
+"998": 0,
+"649": 1,
+"771": Infinity,
+"160": Infinity,
+"431": Infinity,
+"781": Infinity,
+"232": Infinity,
+"672": Infinity
+},
+"node_degrees": {
+"998": 1,
+"649": 1,
+"771": 0,
+"160": 0,
+"431": 0,
+"781": 0,
+"232": 0,
+"672": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since my only connected neighbor (agent 649) has not yet declared a color
+
+
+I should wait for them to choose a color. If they select 0
+
+
+I should also choose 0 to ensure consensus and maximize my payout. If they choose 1
+
+
+I can then consider purchasing an edge to another player to see if I can still steer towards consensus. For now, making no moves is the best course of action to avoid any unnecessary risks.
+
+
+**System** 
+Action Processed: do_nothing({'state': <stateClass.State object at 0x00000180998CE290>})
+
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 998,
+"time_remaining": 0.72,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 3,
+"1": 2
+},
+"connected_colors": {
+"649": "1",
+"672": null
+},
+"shortest_path_distances": {
+"998": 0,
+"649": 1,
+"771": Infinity,
+"160": Infinity,
+"431": Infinity,
+"781": Infinity,
+"232": Infinity,
+"672": 1
+},
+"node_degrees": {
+"998": 2,
+"649": 1,
+"771": 1,
+"160": 1,
+"431": 0,
+"781": 0,
+"232": 0,
+"672": 1
+}
+}
+
+
+**Agent**: 
+Thought: Since I am currently undeclared and I can see that one of my connected neighbors (agent 649) has already chosen color "1," I should also choose color "1" to align with them. This will help me achieve consensus with my neighbor and maximize my payoff. Alternatively, if I wait, the neighboring player 672 may choose a different color, which could lead to a lack of consensus. Thus
+
+
+I should declare my color as "1" immediately.
+
+
+Time: 9.472326278686523 
+**System** 
+Agent 998 set color from None to 1.
+
+
+**System** 
+Action Processed: set_color({'color': '1', 'state': <stateClass.State object at 0x00000180998CE290>})

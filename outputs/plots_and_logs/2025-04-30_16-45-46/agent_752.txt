@@ -1,0 +1,203 @@
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 752,
+"time_remaining": 6.994,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 2,
+"1": 3
+},
+"connected_colors": {},
+"shortest_path_distances": {
+"228": Infinity,
+"752": 0,
+"545": Infinity,
+"882": Infinity,
+"968": Infinity,
+"745": Infinity,
+"633": Infinity,
+"972": Infinity
+},
+"node_degrees": {
+"228": 0,
+"752": 0,
+"545": 0,
+"882": 0,
+"968": 0,
+"745": 0,
+"633": 0,
+"972": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I have no connected neighbors and all players appear to have no color declared
+
+
+I need to purchase an edge to a player to connect with them. This will allow me to see their color and potentially facilitate consensus. I should choose a player to purchase an edge to in hopes of revealing their color.
+
+
+**System**: 
+You have attempted to purchase an edge 1 to an agent that does not exist. Your degrees and shortest path dictionary contain the full set of players of the game: 
+Degrees dict: {228: 0, 752: 0, 545: 0, 882: 0, 968: 0, 745: 0, 633: 0, 972: 0}
+
+
+**System** 
+Action Processed: purchase_edge({'neighbor_id': 1, 'state': <stateClass.State object at 0x000001ABFF386610>})
+
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 752,
+"time_remaining": 4.575,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 2,
+"1": 3
+},
+"connected_colors": {},
+"shortest_path_distances": {
+"228": Infinity,
+"752": 0,
+"545": Infinity,
+"882": Infinity,
+"968": Infinity,
+"745": Infinity,
+"633": Infinity,
+"972": Infinity
+},
+"node_degrees": {
+"228": 2,
+"752": 0,
+"545": 1,
+"882": 0,
+"968": 0,
+"745": 0,
+"633": 1,
+"972": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I have no connected players and cannot see any colors
+
+
+I need to purchase an edge to a player to gather information about their color. I should choose a player to connect with to increase my chances of reaching consensus before time runs out.
+
+
+**System**: 
+You have attempted to purchase an edge 1 to an agent that does not exist. Your degrees and shortest path dictionary contain the full set of players of the game: 
+Degrees dict: {228: 2, 752: 0, 545: 1, 882: 0, 968: 0, 745: 0, 633: 1, 972: 0}
+
+
+**System** 
+Action Processed: purchase_edge({'neighbor_id': 1, 'state': <stateClass.State object at 0x000001ABFF386610>})
+
+
+**System** 
+You run in a loop of Thought and Action. 
+First, generate a thought about a logical action to take in the game. 
+Example session #1:
+Prompt: You have no neighbors in the network
+Thought: I need to purchase an edge to a neighbor to agent 0 in order to gather information about other player's colors.
+Example session #2:
+Prompt: All of your neighbors have color 1, but your color is undeclared
+Thought: I should change my color to '1' in order to achieve consensus and receive a payout when time expires.
+Example session #3:   
+Thought: I should do nothing and wait for time to expire. Then I will receive my reward.
+
+
+**System** 
+[Game Rules Repeat]
+
+
+**System**: 
+Current state of game: 
+{
+"agent_id": 752,
+"time_remaining": 2.788,
+"current_color": "Undeclared",
+"projected_rewards": {
+"0": 2,
+"1": 3
+},
+"connected_colors": {},
+"shortest_path_distances": {
+"228": Infinity,
+"752": 0,
+"545": Infinity,
+"882": Infinity,
+"968": Infinity,
+"745": Infinity,
+"633": Infinity,
+"972": Infinity
+},
+"node_degrees": {
+"228": 3,
+"752": 0,
+"545": 1,
+"882": 1,
+"968": 0,
+"745": 0,
+"633": 1,
+"972": 0
+}
+}
+
+
+**Agent**: 
+Thought: Since I have no connected neighbors with declared colors
+
+
+I should purchase an edge to one of the players not in my colors dictionary. This will allow me to gather information on their color and help move towards a consensus. Given my projected rewards
+
+
+I should aim for consensus on color 1, as it provides a higher payout. I will buy an edge with one of the players who has a degree greater than 0 to maximize my chances of finding out more information about their color.
+
+
+**System**: 
+You have attempted to purchase an edge 2 to an agent that does not exist. Your degrees and shortest path dictionary contain the full set of players of the game: 
+Degrees dict: {228: 3, 752: 0, 545: 1, 882: 1, 968: 0, 745: 0, 633: 1, 972: 0}
+
+
+**System** 
+Action Processed: purchase_edge({'neighbor_id': 2, 'state': <stateClass.State object at 0x000001ABFF386610>})
