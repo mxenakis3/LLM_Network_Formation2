@@ -14,6 +14,7 @@ from log_functions import *
 from network_plots import *
 import random
 from tqdm import tqdm
+import pickle
 
 # Load in API Key and Handle Errors
 load_dotenv()
@@ -109,28 +110,61 @@ async def run_experiment(logs= False, plots=False):
 
 
 async def runner():
-    for i in tqdm(range(2)):
-        await run_experiment(logs=True, plots=True)
+    # for i in tqdm(range(2)):
+    #     await run_experiment(logs=True, plots=True)
 
     # intitialize pkl file for storing experiment results. 
     # 1) networks (graph.nodes data with color)
     # 2) average agent rewards
     # 3) degree distributions 
     # 4) spls
-    # all_networks = []
-    # all_unanimous = []
-    # all_rewards = []
-    # all_degrees = []
-    # all_spls = []
+    all_networks, all_unanimous, all_rewards = [], [], []
+    all_degrees, all_spls = [],[] # list of degree of each agent
 
-    # for i in range(3):
-    #     network, unanimous, rewards, degrees, spls = asyncio.run(run_experiment())
-    #     all_networks.append(network)
-    #     all_unanimous.append(unanimous)
-    #     all_rewards.append(rewards)
-    #     all_degrees.append(degrees)
-    #     all_spls.append(spls)
+    for i in range(2):
+        network, unanimous, rewards, degrees, spls = await run_experiment()
+        all_networks.append(network)
+        all_unanimous.append(unanimous)
+        all_rewards += rewards
+        all_degrees += degrees
+        all_spls += spls
 
+    dir_path = f".\outputs"
+
+    #store files
+    with open(os.path.join(dir_path, f"networks_standard"), "wb") as f:
+        pickle.dump(all_networks, f)
+    
+    with open(os.path.join(dir_path, f"unanimous_standard"), "wb") as f:
+        pickle.dump(all_unanimous, f)
+
+    with open(os.path.join(dir_path, f"rewards_standard"), "wb") as f:
+        pickle.dump(all_rewards, f)
+
+    with open(os.path.join(dir_path, f"degrees_standard"), "wb") as f:
+        pickle.dump(all_degrees, f)
+
+    with open(os.path.join(dir_path, f"spls_standard"), "wb") as f:
+        pickle.dump(all_spls, f)
+    
+    # load files
+    with open(os.path.join(dir_path, f"networks_standard"), "rb") as f:
+        networks_standard_list = pickle.load(f)
+        networks_standard_list = np.array(networks_standard_list)
+    with open(os.path.join(dir_path, f"unanimous_standard"), "rb") as f:
+        unanimous_standard_list = pickle.load(f)
+        unanimous_standard_list = np.array(unanimous_standard_list)
+    with open(os.path.join(dir_path, f"rewards_standard"), "rb") as f:
+        rewards_standard_list = pickle.load(f)
+        rewards_standard_list = np.array(rewards_standard_list)
+    with open(os.path.join(dir_path, f"degrees_standard"), "rb") as f:
+        degrees_standard_list = pickle.load(f)
+        degrees_standard_list = np.array(degrees_standard_list)
+    with open(os.path.join(dir_path, f"spls_standard"), "rb") as f:
+        spls_standard_list = pickle.load(f)
+        spls_standard_list = np.array(spls_standard_list)
+    
+    
     # pa_all_networks = []
     # pa_all_unanimous = []
     # pa_all_rewards = []
