@@ -1,0 +1,109 @@
+
+Time: 2.270627737045288 
+**System** 
+Agent 148 adds edge 749
+
+
+Nodes: [(749, {'color': None}), (148, {'color': None}), (387, {'color': None}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': None})] 
+Edges: [(749, 148, {})]
+
+
+Time: 2.2823798656463623 
+**System** 
+Agent 387 adds edge 749
+
+
+Nodes: [(749, {'color': None}), (148, {'color': None}), (387, {'color': None}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': None})] 
+Edges: [(749, 148, {}), (749, 387, {})]
+
+
+Time: 3.332756757736206 
+**System** 
+Agent 316 adds edge 749
+
+
+Nodes: [(749, {'color': None}), (148, {'color': None}), (387, {'color': None}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': None})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {})]
+
+
+Time: 5.338128328323364 
+**System** 
+Agent 590 adds edge 749
+
+
+Nodes: [(749, {'color': None}), (148, {'color': None}), (387, {'color': None}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': None})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 7.772088527679443 
+**System** 
+Agent 148 set color from None to 1.
+
+
+Nodes: [(749, {'color': None}), (148, {'color': '1'}), (387, {'color': None}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': None})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 7.831055164337158 
+**System** 
+Agent 749 set color from None to 0.
+
+
+Nodes: [(749, {'color': '0'}), (148, {'color': '1'}), (387, {'color': None}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': None})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 7.844560861587524 
+**System** 
+Agent 472 set color from None to 1.
+
+
+Nodes: [(749, {'color': '0'}), (148, {'color': '1'}), (387, {'color': None}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': '1'})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 7.956242561340332 
+**System** 
+Agent 387 set color from None to 0.
+
+
+Nodes: [(749, {'color': '0'}), (148, {'color': '1'}), (387, {'color': '0'}), (316, {'color': None}), (517, {'color': None}), (739, {'color': None}), (590, {'color': None}), (472, {'color': '1'})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 8.024979591369629 
+**System** 
+Agent 739 set color from None to 1.
+
+
+Nodes: [(749, {'color': '0'}), (148, {'color': '1'}), (387, {'color': '0'}), (316, {'color': None}), (517, {'color': None}), (739, {'color': '1'}), (590, {'color': None}), (472, {'color': '1'})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 8.029510736465454 
+**System** 
+Agent 517 set color from None to 0.
+
+
+Nodes: [(749, {'color': '0'}), (148, {'color': '1'}), (387, {'color': '0'}), (316, {'color': None}), (517, {'color': '0'}), (739, {'color': '1'}), (590, {'color': None}), (472, {'color': '1'})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 8.601848602294922 
+**System** 
+Agent 590 set color from None to 0.
+
+
+Nodes: [(749, {'color': '0'}), (148, {'color': '1'}), (387, {'color': '0'}), (316, {'color': None}), (517, {'color': '0'}), (739, {'color': '1'}), (590, {'color': '0'}), (472, {'color': '1'})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+
+Time: 9.201849460601807 
+**System** 
+Agent 316 set color from None to 1.
+
+
+Nodes: [(749, {'color': '0'}), (148, {'color': '1'}), (387, {'color': '0'}), (316, {'color': '1'}), (517, {'color': '0'}), (739, {'color': '1'}), (590, {'color': '0'}), (472, {'color': '1'})] 
+Edges: [(749, 148, {}), (749, 387, {}), (749, 316, {}), (749, 590, {})]
+
+ Consensus was not reached.

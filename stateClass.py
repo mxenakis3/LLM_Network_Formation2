@@ -3,15 +3,16 @@ import networkx as nx
 class State():
     def __init__(self, init_config): # For now 
         self.network = nx.Graph()
-        num_nodes = init_config['V']
+        # num_nodes = init_config['V']
 
-        # Initialize network with no color
-        for node in range(num_nodes):
-            self.network.add_node(node, color= None)
+        # # Initialize network with no color
+        # for node in range(num_nodes):
+        #     self.network.add_node(node, color= None)
 
         # Get shortest path distances, but disconnected nodes have to appear at inf. distance
         # Set initial spls to inf
         self.spls = {u: {v: float('inf') for v in self.network.nodes} for u in self.network.nodes}
+        print(f"spls on init: {self.spls}")
 
         # Then update from single source path lengths
         for u in self.network.nodes:
