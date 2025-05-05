@@ -55,8 +55,8 @@ run_config = {
 
   "react_max_iters": 3,
   "init_configs": {
-    "duration": 10, # time of experiment in seconds
-    "V": 2,
+    "duration": 20, # time of experiment in seconds
+    "V": 3,
     "agent_0":{      
       "consensus_0_reward": 3,
       "consensus_1_reward": 2,

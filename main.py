@@ -70,6 +70,7 @@ async def run_experiment(logs= False, plots=False):
 
     end_time = time.time()
 
+
    ## LOG EXPERIMENTS ##
    # Check if all nodes are unanimous
     unanimous, choice = state.check_unanimous()
@@ -78,10 +79,10 @@ async def run_experiment(logs= False, plots=False):
     if choice is None:
         rewards = [0]*len(list(agents.keys()))
     else:
-        if choice == 0:
-            rewards = [agent.consensus_0_reward for agent in agents]
-        elif choice == 1:
-            rewards = [agent.consensus_0_reward for agent in agents]
+        if choice == str(0):
+            rewards = [agent.consensus_0_reward for agent_id, agent in agents.items()]
+        elif choice == str(1):
+            rewards = [agent.consensus_0_reward for agent_id, agent in agents.items()]
 
     # Get node degrees as list
     node_degrees = [deg for _, deg in state.network.degree()]

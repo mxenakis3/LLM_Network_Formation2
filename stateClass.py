@@ -1,7 +1,7 @@
 import networkx as nx
 
 class State():
-    def __init__(self): # For now 
+    def __init__(self):
         self.network = nx.Graph()
 
         # Get shortest path distances, but disconnected nodes have to appear at inf. distance
@@ -68,7 +68,7 @@ class State():
     def check_unanimous(self):
         colors = {self.network.nodes[node]['color'] for node in self.network.nodes}
         # Check if all nodes are either 0 or 1, and if all colors are the same
-        if len(colors) == 1 and all(color in {0, 1} for color in colors):
+        if len(colors) == 1 and all(color in {str(0), str(1)} for color in colors):
             return True, colors.pop()  # pop() removes and returns the only element in the set
         return False, None
     

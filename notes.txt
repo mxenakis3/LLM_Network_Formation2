@@ -1,5 +1,4 @@
 Code Changes:
-- check unanimous function
 - Set up runner class correctly
 - Try/Except blocks
 - Crash-proofing .pkl files for runs (ex. insuffucient credit, etc)
@@ -11,7 +10,8 @@ Code Changes:
 Agent Changes:
 - RL implementation
 - Memory: Summarizing
-- Implement RAISE with short/long term memory
+- Implement RAISE with short/long term memory scratchpads
+- use smaller networks
 
 Experiments:
 - Replay memory vs no replay memory
