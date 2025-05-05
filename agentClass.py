@@ -37,7 +37,7 @@ class ReActAgent:
         # Get configs for this agent
         self.system = run_config["react_system_message"]
 
-    async def __call__(self, state, react_max_iters=5): 
+    async def __call__(self, state): 
         self.spls, self.degrees, self.colors = state.render(self.id) 
 
         if self.system is not None: # self.system is the system message that outlines the ReAct scheme

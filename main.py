@@ -10,8 +10,8 @@ from datetime import datetime
 from config_py import run_config
 from tqdm.asyncio import tqdm
 import matplotlib.pyplot as plt
-from log_functions import *
-from network_plots import *
+from utils.log_functions import *
+from utils.network_plots import *
 import random
 from tqdm import tqdm
 import pickle
@@ -26,6 +26,7 @@ plt.switch_backend('Agg')
 
 async def run_experiment(logs= False, plots=False):
     """
+    Runs a single experiment from configs. run_config is imported.
     Returns:
     - network: nx state
     - unanimous: (bool) True if consensus reached on color
@@ -123,6 +124,9 @@ async def run_experiment(logs= False, plots=False):
 
 
 async def runner(run_config):
+    """
+    Calls run experiments and saves results
+    """
 
     # Plot first set of trials
     for _ in tqdm(range(run_config['num_plotted_standard_trials'])):

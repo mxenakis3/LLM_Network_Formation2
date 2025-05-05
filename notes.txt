@@ -1,16 +1,18 @@
 Code Changes:
-- Get rid of react max iters
+- check unanimous function
 - Set up runner class correctly
-- More professional logging
 - Try/Except blocks
-- GUI to run?
+- Crash-proofing .pkl files for runs (ex. insuffucient credit, etc)
+- utils folder for logging/plotting functions
+- More professional logging
+- Refactor class names
+- Decorators (?)
+
+Agent Changes:
 - RL implementation
-- Crash-proofing .pkl files for runs (ex. insiffucient credit, etc)
 - Memory: Summarizing
-- utils function for logging/plotting functions
 - Implement RAISE with short/long term memory
 
 Experiments:
 - Replay memory vs no replay memory
 - Different models against each other
-- Read paper to think of experiments

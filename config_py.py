@@ -1,7 +1,5 @@
 
 run_config = {
-  "max_iters": 5,
-
   "react_system_message": f"""
       You run in a loop of Thought and Action. 
       First, generate a thought about a logical action to take in the game. 
@@ -57,8 +55,8 @@ run_config = {
 
   "react_max_iters": 3,
   "init_configs": {
-    "duration": 60, # time of experiment in seconds
-    "V": 36,
+    "duration": 10, # time of experiment in seconds
+    "V": 2,
     "agent_0":{      
       "consensus_0_reward": 3,
       "consensus_1_reward": 2,
