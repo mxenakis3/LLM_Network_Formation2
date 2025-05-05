@@ -7,21 +7,23 @@ import networkx as nx
 
 def parse_chat_log(chat_log):
     formatted_output = []
-    
-    for entry in chat_log:
-        # Split only on the outermost commas, preserving commas inside text
-        split_entries = re.split(r',\s*(?=[A-Z])', entry)  # Comma followed by capital letter (heuristic for separation)
-        
-        for sub_entry in split_entries:
-            cleaned_text = re.sub(r'\n\s+', '\n', sub_entry.strip())  # Clean extra spaces/newlines
+    try:
+        for entry in chat_log:
+            # Split only on the outermost commas, preserving commas inside text
+            split_entries = re.split(r',\s*(?=[A-Z])', entry)  # Comma followed by capital letter (heuristic for separation)
             
-            # Categorize messages
-            if "Thought:" in cleaned_text or "Action:" in cleaned_text:
-                formatted_output.append(f"\n{cleaned_text}\n")
-            else:
-                formatted_output.append(f"\n{cleaned_text}\n")
-    
-    return "\n".join(formatted_output)
+            for sub_entry in split_entries:
+                cleaned_text = re.sub(r'\n\s+', '\n', sub_entry.strip())  # Clean extra spaces/newlines
+                
+                # Categorize messages
+                if "Thought:" in cleaned_text or "Action:" in cleaned_text:
+                    formatted_output.append(f"\n{cleaned_text}\n")
+                else:
+                    formatted_output.append(f"\n{cleaned_text}\n")
+        
+        return "\n".join(formatted_output)
+    except:
+        return "Error in parsing dictionary. Likely an unknown character."
 
 
 def create_state_log(state, save_path="shortest_path_distribution.png"):
@@ -42,10 +44,13 @@ def create_state_log(state, save_path="shortest_path_distribution.png"):
 
 
 def create_agent_logs(agents, dir_path):
-  # Ensure the directory exists before trying to write files
-  os.makedirs(dir_path, exist_ok=True)
+    # Ensure the directory exists before trying to write files
+    os.makedirs(dir_path, exist_ok=True)
 
-  for agent_id, agent in agents.items():
-      file_path = os.path.join(dir_path, f"agent_{agent_id}.txt")
-      with open(file_path, "w") as file:
-          file.write(parse_chat_log(agent.permanent_memory))
+    for agent_id, agent in agents.items():
+        file_path = os.path.join(dir_path, f"agent_{agent_id}.txt")
+        with open(file_path, "w") as file:
+            try:
+                file.write(parse_chat_log(agent.permanent_memory))
+            except:
+                continue

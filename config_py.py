@@ -1,5 +1,5 @@
 
-config = {
+run_config = {
   "max_iters": 5,
 
   "react_system_message": f"""
@@ -34,7 +34,7 @@ config = {
   1. **You can only see the colors of players you are directly connected to.**
     - These players appear in the `colors` dictionary.
     - If a player does **not** appear in this dictionary, they are **not connected to you**, and you **cannot see their color**.
-    - If a player **is in your `colors` dictionary but shows as "null,"** it means they **have not yet chosen a color**, and their color will become visible **when they do**
+    - If a player **is in your `colors` dictionary but shows as "null", or "Undeclared"** it means they **have not yet chosen a color**, and their color will become visible **when they do**
 
   2. **You receive network-wide statistics** (but NOT full player states):
     - **Degree (number of connections per player).**
@@ -57,8 +57,8 @@ config = {
 
   "react_max_iters": 3,
   "init_configs": {
-    "duration": 7, # time of experiment in seconds
-    "V": 8,
+    "duration": 60, # time of experiment in seconds
+    "V": 36,
     "agent_0":{      
       "consensus_0_reward": 3,
       "consensus_1_reward": 2,

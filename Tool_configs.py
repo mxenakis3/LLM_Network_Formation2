@@ -10,7 +10,7 @@ purchase_edge = {
       "properties": {
         "neighbor_id" : {
           "type": "number",
-          "description": "The ID of the neighbor to whom you will purchase an edge"
+          "description": "The ID of the neighbor to whom you will purchase an edge (must exist as a key in 'node_degrees')"
         },
       },
       "required": ["neighbor_id"],

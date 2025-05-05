@@ -1,10 +1,11 @@
 import asyncio
 from os import truncate
 import time
-from config_py import config
+from config_py import run_config
 import openai
 from Tool_configs import agent_actions
 import json
+import random
 
 class ReActAgent:
     def __init__(self, client, id, type_specific_params = {"edge_cost": 0, "consensus_0_reward": 0, "consensus_1_reward":0}, start_time = time.time(), time_limit = 20): # system prompt: you are working in a loop, etc. 
@@ -27,14 +28,14 @@ class ReActAgent:
         self.degrees = {}
 
         # Agent configs
-        agent_configs = config['init_configs'][f"agent_{self.type}"]
+        agent_configs = run_config['init_configs'][f"agent_{self.type}"]
 
         # Create a message that shows state of game, including the agents id
-        self.game_rules = {"role": "user", "content" : config["game_rules"].format(**agent_configs)}
+        self.game_rules = {"role": "user", "content" : run_config["game_rules"].format(**agent_configs)}
 
         # PROMPTS THAT DO NOT CHANGE:
         # Get configs for this agent
-        self.system = config["react_system_message"]
+        self.system = run_config["react_system_message"]
 
     async def __call__(self, state, react_max_iters=5): 
         self.spls, self.degrees, self.colors = state.render(self.id) 
@@ -54,7 +55,7 @@ class ReActAgent:
                 "0": self.consensus_0_reward,
                 "1": self.consensus_1_reward
             },
-            "connected_colors": self.colors or {},
+            "connected_colors": self.colors,
             "shortest_path_distances": self.spls,
             "node_degrees": self.degrees
         }, indent=2)
@@ -64,33 +65,50 @@ class ReActAgent:
         self.permanent_memory.append(f"**System**: \n Current state of game: \n {json_state}")
 
         # Generate thought based on current state
+        # Append most recent thought to memory
+
         try:
             raw_result = await self.query(state)
+            self.permanent_memory.append(f"**Agent**: \n {raw_result.content}")
+
         except Exception as e:
+            # print(f"Exception occurred in generating thought. Returning early \n {e}")
             self.permanent_memory.append(f"**System** \n Exception occurred in generating thought. Returning early")
             return
-        # Append most recent thought to memory
-        self.permanent_memory.append(f"**Agent**: \n {raw_result.content}")
 
         # Pass the thought to the tool caller. This will parse the thought into a function call.
         action_choice = await self.call_with_tools([{"role": "assistant", "content" : raw_result.content}], self.tools)
 
-        # Call the action chosen by the tool
-        fn_name = action_choice[0].function.name
-        fn_args = json.loads(action_choice[0].function.arguments)
+        if action_choice == None:
+            # print(f"Error: llm selects no action")
+            fn_name = 'do_nothing'
+            fn_args = {'state': state}
+        
+        else:
+            # Call the action chosen by the tool
+            try:
+                fn_name = action_choice[0].function.name
+                fn_args = json.loads(action_choice[0].function.arguments)
 
-        # add current state as argument for function call:
-        fn_args["state"] = state
+                # add current state as argument for function call:
+                fn_args["state"] = state 
+            except:
+                self.permanent_memory.append(f"**System** \n Error: Invalid Action Processed")
+                return
 
-        # Call the method
+
         method = getattr(self, fn_name, None)           
         if method and asyncio.iscoroutinefunction(method):
-            call = asyncio.create_task(method(**fn_args))
-            await call # calls the function
+            try:
+                call = asyncio.create_task(method(**fn_args))
+                await call # calls the function
 
-        # Add the function call to memory
-        self.permanent_memory.append(f"**System** \n Action Processed: {fn_name}({fn_args})")
-
+                # Add the function call to memory
+                self.permanent_memory.append(f"**System** \n Action Processed: {fn_name}({fn_args})")
+            except:
+                self.permanent_memory.append(f"**System** \n Invalid action processed: {fn_name}({fn_args})")
+        else:
+            self.permanent_memory.append(f"**System** \n Error: Invalid Action Processed")
     
     async def call_with_tools(self, action_message, tools):
         """
@@ -102,7 +120,7 @@ class ReActAgent:
         """
         # kwargs for the API
         kwargs = {
-        "model": "gpt-4o-mini",
+        "model": "gpt-4.1-nano",
         "messages" : action_message
         }
         if tools is not None:
@@ -120,12 +138,16 @@ class ReActAgent:
         retries = 0
         while retries < num_retries:
             try:
+                self.permanent_memory.append(f"**System** \n Try block entered. ")
                 completion = await self.client.chat.completions.create(
-                    model = "gpt-4o-mini",
+                    model = "gpt-4.1-nano",
                     messages = self.messages
                 )
+                # print(f"agent {self.id} completion: {completion}")
+
                 return completion.choices[0].message # This returns only the AI's response in text without any "context". 
-            except openai.RateLimitError:
+            except Exception as e:
+                self.permanent_memory.append(f"**System** \n Error occurs: {e}")
                 state.update_log.append(f"Rate limit error: Agent {self.id}, time: {time.time() - self.start_time}")
                 wait_time = 1
                 await asyncio.sleep(wait_time)
@@ -137,6 +159,10 @@ class ReActAgent:
     # break loop reserved for cases where agent either makes change to network or withdraws from the option to do so on this turn
     async def purchase_edge(self, neighbor_id, state):
         # Error handling: agent tries to purchase a self-edge
+        if neighbor_id == 1:
+            # Assume a random id
+            neighbor_id = random.choice(list(self.degrees.keys()))
+        
         if self.id == neighbor_id:
             error =  f"""
                 You have attempted to purchase an edge to yourself. As a reminder, you are agent {self.id}. You can already read your color information, it is {self.color}: 
@@ -196,6 +222,9 @@ class ReActAgent:
 
         # Update the node color
         state.update_node_color(self.id, color)
+
+        # Update own color
+        self.color = color
 
         state.update_log.append(f"Time: {time.time() - self.start_time} \n  **System** \n Agent {self.id} set color from {original_color} to {color}.")
         state.update_log.append(f"Nodes: {state.network.nodes(data=True)} \n Edges: {state.network.edges(data=True)}")

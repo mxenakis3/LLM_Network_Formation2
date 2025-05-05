@@ -1,21 +1,16 @@
-Still have to:
--Get rid of react max iters
-- Fix the graphing portions to make the graphs look better
-  - Add in a proper assortativtity graph
-  - Add in a proper SPL distribution graph
-  - Clustering and transitivity
-- Allow for node ID's to be randomly generated (to avoid getting power law distributions)
-- Allow for initial network configuratons (ie. starting off with ER graphs)
+Code Changes:
+- Get rid of react max iters
+- Set up runner class correctly
+- More professional logging
+- Try/Except blocks
+- GUI to run?
+- RL implementation
+- Crash-proofing .pkl files for runs (ex. insiffucient credit, etc)
+- Memory: Summarizing
+- utils function for logging/plotting functions
+- Implement RAISE with short/long term memory
 
-Done
-- JSON setups
-- Fix state message to include up-to-date dictionaries from state.
-- Find out why edges can be re-added (2,1) not treated as (1,2)
-- Refactor so that we dont finish processing the action in agent loop but rather in process action
-- Asynchronous agents
-
-Hyperparameters
-- The prompt (!!)
-- The Model (!!)
-- Temperature
-- Max Tokens
+Experiments:
+- Replay memory vs no replay memory
+- Different models against each other
+- Read paper to think of experiments
