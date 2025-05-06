@@ -1,5 +1,5 @@
 
-run_config = {
+agent_config = {
   "react_system_message": f"""
       You run in a loop of Thought and Action. 
       First, generate a thought about a logical action to take in the game. 
@@ -52,22 +52,5 @@ run_config = {
   - The colors dictionary will automatically update if and when your neighbors change their colors.
   """,
     
-
-  "react_max_iters": 3,
-  "init_configs": {
-    "duration": 20, # time of experiment in seconds
-    "V": 3,
-    "agent_0":{      
-      "consensus_0_reward": 3,
-      "consensus_1_reward": 2,
-      "edge_cost": 0.03
-    },
-
-    "agent_1":{
-      "consensus_0_reward": 2,
-      "consensus_1_reward": 3,
-      "edge_cost": 0.03
-    }
   }
-}
   

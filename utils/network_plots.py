@@ -1,6 +1,5 @@
 
 import networkx as nx
-from config_py import run_config
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 import networkx as nx
@@ -9,38 +8,38 @@ import numpy as np
 from collections import Counter
 from collections import defaultdict
 
-def plot_network(G, save_path="network.png"):
-    # Define color mapping
-    color_map = {
-        '1': 'blue',
-        '0': 'red',
-        None: 'white'
-    }
+# def plot_network(G, save_path="network.png"):
+#     # Define color mapping
+#     color_map = {
+#         '1': 'blue',
+#         '0': 'red',
+#         None: 'white'
+#     }
 
-    # Extract node colors
-    node_colors = [color_map.get(G.nodes[n].get('color', None), 'white') for n in G.nodes]
+#     # Extract node colors
+#     node_colors = [color_map.get(G.nodes[n].get('color', None), 'white') for n in G.nodes]
 
-    # Extract labels
-    labels = {n: G.nodes[n].get('agent_id', n) for n in G.nodes}
+#     # Extract labels
+#     labels = {n: G.nodes[n].get('agent_id', n) for n in G.nodes}
 
-    # Create plot
-    fig = plt.figure(figsize=(8, 6))
-    pos = nx.spring_layout(G)
-    nx.draw(G, pos, node_color=node_colors, with_labels=True, labels=labels, edge_color='gray', node_size=500, font_size=10)
+#     # Create plot
+#     fig = plt.figure(figsize=(8, 6))
+#     pos = nx.spring_layout(G)
+#     nx.draw(G, pos, node_color=node_colors, with_labels=True, labels=labels, edge_color='gray', node_size=500, font_size=10)
 
-    plt.title(f"Agents: {len(G.nodes)}, Duration: {run_config['init_configs']['duration']}")
+#     plt.title(f"Agents: {len(G.nodes)}, Duration: {run_config['init_configs']['duration']}")
 
-    # Create legend manually
-    legend_patches = [
-        mpatches.Patch(color='blue', label='Color 1'),
-        mpatches.Patch(color='red', label='Color 0'),
-        mpatches.Patch(color='white', label='Undeclared')
-    ]
-    plt.legend(handles=legend_patches, loc="upper right")
+    # # Create legend manually
+    # legend_patches = [
+    #     mpatches.Patch(color='blue', label='Color 1'),
+    #     mpatches.Patch(color='red', label='Color 0'),
+    #     mpatches.Patch(color='white', label='Undeclared')
+    # ]
+    # plt.legend(handles=legend_patches, loc="upper right")
 
-    fig.savefig(save_path, format="png", dpi=300)
-    plt.close(fig)  
-    print(f"Plot saved to {save_path}")
+    # fig.savefig(save_path, format="png", dpi=300)
+    # plt.close(fig)  
+    # print(f"Plot saved to {save_path}")
 
 def get_prob_dist(data):
     """
@@ -113,54 +112,7 @@ def plot_shortest_path_freq(G, save_path="shortest_path_distribution.png"):
     plt.close()  
     print(f"Plot saved to {save_path}")
 
-# def plot_across_pdfs(dict_list, title, x_axis, y_axis, color, save_path="degree_distribution.png"):
-#     """
-#     Inputs: 
-#     - dict_list: list of dict objects representing a discrete pdf (x: p(x))
-#     - title: title of plot
-#     - x_axis: title of x-axis
-#     - y-axis: title of y-axis
-#     Outputs:
-#     - a plot 
-#     - x axis: unique values
-#     - y-axis: avg probability/ stdev prob
-#     """
 
-#     # Find all unique keys across all PDFs
-#     all_keys = set()
-#     for d in dict_list:
-#         all_keys.update(d.keys())
-#     all_keys = sorted(all_keys)
-
-#     # Pad each dict with zeros where keys are missing
-#     padded_dicts = []
-#     for d in dict_list:
-#         padded = {k: d.get(k, 0.0) for k in all_keys}
-#         padded_dicts.append(padded)
-
-#     # Aggregate
-#     master_dict = defaultdict(list)
-#     for d in padded_dicts:
-#         for k, prob in d.items():
-#             master_dict[k].append(prob)
-
-#     means = [np.mean(master_dict[k]) for k in all_keys]
-#     stds = [np.std(master_dict[k]) for k in all_keys]
-
-#     # Plot
-#     plt.figure(figsize=(8, 6))
-#     plt.errorbar(all_keys, means, yerr=stds, fmt='o-', capsize=5, color=color, label='Avg ± Std Dev')
-#     plt.title(title)
-#     plt.xlabel(x_axis)
-#     plt.ylabel(y_axis)
-#     plt.grid(True)
-#     plt.legend()
-#     plt.tight_layout()
-#     plt.set_xscale("log")
-#     plt.set_yscale("log")
-#     plt.savefig(save_path, format="png", dpi=300)
-#     plt.close()
-#     print(f"Plot saved to {save_path}")
 def plot_across_pdfs(dict_list, title, x_axis, y_axis, color, save_path="degree_distribution.png"):
     """
     Inputs: 

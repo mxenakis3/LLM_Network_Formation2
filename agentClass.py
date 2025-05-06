@@ -1,17 +1,20 @@
 import asyncio
-from os import truncate
 import time
-from config_py import run_config
-import openai
-from Tool_configs import agent_actions
 import json
 import random
 
 class ReActAgent:
-    def __init__(self, client, id, type_specific_params = {"edge_cost": 0, "consensus_0_reward": 0, "consensus_1_reward":0}, start_time = time.time(), time_limit = 20): # system prompt: you are working in a loop, etc. 
+    def __init__(self,
+                client, 
+                id,
+                agent_config,
+                tool_config,
+                type_specific_params = {"edge_cost": 0, "consensus_0_reward": 0, "consensus_1_reward":0},
+                start_time = time.time(),
+                time_limit = 20):
         self.id = id
         self.type = self.id % 2
-        self.color = "Undeclared" # Previously set to None, but agents were under the impression that "None" meant that an edge could be purcahsed to reveal agent's color
+        self.color = "Undeclared"
         self.edge_cost = type_specific_params["edge_cost"]
         self.consensus_0_reward = type_specific_params["consensus_0_reward"]
         self.consensus_1_reward = type_specific_params["consensus_1_reward"]
@@ -20,22 +23,19 @@ class ReActAgent:
         self.permanent_memory = [] # will be used to create log
         self.start_time = time.time()
         self.time_limit = time_limit
-        self.tools = agent_actions
+        self.tools = tool_config # this is a list of the configs for each of the agent actions
 
         # The following dictionaries are updated from the agent's view of the state in the main loop.
         self.colors = {}
         self.spls = {}
         self.degrees = {}
 
-        # Agent configs
-        agent_configs = run_config['init_configs'][f"agent_{self.type}"]
-
         # Create a message that shows state of game, including the agents id
-        self.game_rules = {"role": "user", "content" : run_config["game_rules"].format(**agent_configs)}
+        self.game_rules = {"role": "user", "content" : agent_config["game_rules"].format(**{'consensus_0_reward' : self.consensus_0_reward, 'consensus_1_reward': self.consensus_1_reward, 'edge_cost': self.edge_cost})}
 
         # PROMPTS THAT DO NOT CHANGE:
         # Get configs for this agent
-        self.system = run_config["react_system_message"]
+        self.system = agent_config["react_system_message"]
 
     async def __call__(self, state): 
         self.spls, self.degrees, self.colors = state.render(self.id) 

@@ -1,8 +1,8 @@
 Code Changes:
 - Set up runner class correctly
-- Try/Except blocks
+- Fix the metrics 
+- Error/Exception handling
 - Crash-proofing .pkl files for runs (ex. insuffucient credit, etc)
-- utils folder for logging/plotting functions
 - More professional logging
 - Refactor class names
 - Decorators (?)
