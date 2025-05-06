@@ -1,0 +1,18 @@
+Code Changes:
+- Set up runner class correctly
+- Fix the metrics 
+- Error/Exception handling
+- Crash-proofing .pkl files for runs (ex. insuffucient credit, etc)
+- More professional logging
+- Refactor class names
+- Decorators (?)
+
+Agent Changes:
+- RL implementation
+- Memory: Summarizing
+- Implement RAISE with short/long term memory scratchpads
+- use smaller networks
+
+Experiments:
+- Replay memory vs no replay memory
+- Different models against each other
