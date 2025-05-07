@@ -1,6 +1,6 @@
 runner_config = {
   'num_trials' : 2,
-  'duration': 5,
+  'duration': 3,
   'V': 3,
   "agent_0":{      
       "consensus_0_reward": 3,

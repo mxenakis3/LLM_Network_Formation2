@@ -1,11 +1,15 @@
 Code Changes:
-- Set up runner class correctly
+- Separate runner class
+- Shuffle order that agents are passed into state dict (?)
+- Measure the number of exceptions we get in purchase_edge / set_color / log exceptions
+- Pass in client name from config
 - Fix the metrics 
 - Error/Exception handling
 - Crash-proofing .pkl files for runs (ex. insuffucient credit, etc)
-- More professional logging
-- Refactor class names
+  - Discard runs with insufficient credit errors
 - Decorators (?)
+- Logging (?)
+- README
 
 Agent Changes:
 - RL implementation

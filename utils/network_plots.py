@@ -164,8 +164,6 @@ def plot_across_pdfs(dict_list, title, x_axis, y_axis, color, save_path="degree_
     # Create trendline in log-log space
     fit_ys = 10 ** (intercept + slope * log_xs)  # back-transform to original scale
 
-
-
     # Plot
     fig, ax = plt.subplots(figsize=(8, 6))
     # Plot the trendline
