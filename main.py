@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from utils.log_functions import *
 from utils.network_plots import *
 from runner_config import runner_config
-from tools import agent_actions
+from tool_configs import agent_actions
 from agent_configs import agent_config
 
 from runner import Runner

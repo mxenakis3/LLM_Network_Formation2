@@ -1,5 +1,6 @@
 
 agent_config = {
+  "model_name": f"gpt-4.1-nano",
   "react_system_message": f"""
       You run in a loop of Thought and Action. 
       First, generate a thought about a logical action to take in the game. 

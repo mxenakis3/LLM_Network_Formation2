@@ -24,6 +24,7 @@ class ReActAgent:
         self.start_time = time.time()
         self.time_limit = time_limit
         self.tools = tool_config # this is a list of the configs for each of the agent actions
+        self.model_name = agent_config['model_name']
 
         # The following dictionaries are updated from the agent's view of the state in the main loop.
         self.colors = {}
@@ -120,7 +121,7 @@ class ReActAgent:
         """
         # kwargs for the API
         kwargs = {
-        "model": "gpt-4.1-nano",
+        "model": self.model_name,
         "messages" : action_message
         }
         if tools is not None:
@@ -140,7 +141,7 @@ class ReActAgent:
             try:
                 self.permanent_memory.append(f"**System** \n Try block entered. ")
                 completion = await self.client.chat.completions.create(
-                    model = "gpt-4.1-nano",
+                    model = self.model_name,
                     messages = self.messages
                 )
                 # print(f"agent {self.id} completion: {completion}")
